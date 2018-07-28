@@ -401,6 +401,7 @@ class TIotC7a508a0c7743cdde705DetailViewController: FUIFormTableViewController, 
         self.showFioriLoadingIndicator()
         self.view.endEditing(true)
         self.logger.info("Updating entity in backend.")
+        
         self.iotservice.updateEntity(self.entity) { error in
             self.hideFioriLoadingIndicator()
             if let error = error {
