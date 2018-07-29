@@ -2,7 +2,7 @@
 ## Running the app
 ### Steps to run app on XCODE v9.4.1
 1. Clone this repository
-2. Run `./init.sh`; this downloads the necessary dependencies. If this does not work, see below ('How to download prerequisite frameworks').
+2. Run `./init.sh`; this downloads the necessary dependencies. If this does not work, see below [How to download prerequisite frameworks](#how-to-download-prerequisite-frameworks).
 
 ### Dependencies
 #### How to download prerequisite frameworks
