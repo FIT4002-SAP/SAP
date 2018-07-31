@@ -11,4 +11,5 @@ mv frameworks.tmp/*.framework FIT4002-v1;
 echo 'Cleaning up...';
 rm -R frameworks.tmp;
 rm frameworks.zip;
+
 echo 'Finished!';
