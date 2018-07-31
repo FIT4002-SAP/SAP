@@ -1,8 +1,8 @@
 //
 // TIotC7a508a0c7743cdde705DetailViewController.swift
-// FIT4002-v1
+// IOT-Manager
 //
-// Created by SAP Cloud Platform SDK for iOS Assistant application on 25/07/18
+// Created by SAP Cloud Platform SDK for iOS Assistant application on 31/07/18
 //
 
 import Foundation
@@ -401,7 +401,6 @@ class TIotC7a508a0c7743cdde705DetailViewController: FUIFormTableViewController, 
         self.showFioriLoadingIndicator()
         self.view.endEditing(true)
         self.logger.info("Updating entity in backend.")
-        
         self.iotservice.updateEntity(self.entity) { error in
             self.hideFioriLoadingIndicator()
             if let error = error {

@@ -12,7 +12,7 @@
         <!--Master-->
         <scene sceneID="RKw-IL-dqd">
             <objects>
-                <tableViewController restorationIdentifier="TIotC7a508a0c7743cdde705Master" storyboardIdentifier="TIotC7a508a0c7743cdde705Master" title="Master" id="a59-Mb-pSm" customClass="TIotC7a508a0c7743cdde705MasterViewController" customModule="FIT4002_v1" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="TIotC7a508a0c7743cdde705Master" storyboardIdentifier="TIotC7a508a0c7743cdde705Master" title="Master" id="a59-Mb-pSm" customClass="TIotC7a508a0c7743cdde705MasterViewController" customModule="IOT_Manager" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nUO-hq-XXj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="AbA-MP-qfJ" kind="show" identifier="showDetail" id="4d1-5a-67b"/>
+                                    <segue destination="AbA-MP-qfJ" kind="show" identifier="showDetail" id="7cb-bc-a8c"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -54,7 +54,7 @@
         <!--Detail-->
         <scene sceneID="k9g-RP-XuX">
             <objects>
-                <tableViewController title="Detail" id="AbA-MP-qfJ" customClass="TIotC7a508a0c7743cdde705DetailViewController" customModule="FIT4002_v1" sceneMemberID="viewController">
+                <tableViewController title="Detail" id="AbA-MP-qfJ" customClass="TIotC7a508a0c7743cdde705DetailViewController" customModule="IOT_Manager" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="msU-WP-HoT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,6 +120,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4d1-5a-67b"/>
+        <segue reference="7cb-bc-a8c"/>
     </inferredMetricsTieBreakers>
 </document>

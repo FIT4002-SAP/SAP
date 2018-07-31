@@ -1,8 +1,8 @@
 //
 // SAPFioriLoadingIndicator.swift
-// FIT4002-v1
+// IOT-Manager
 //
-// Created by SAP Cloud Platform SDK for iOS Assistant application on 25/07/18
+// Created by SAP Cloud Platform SDK for iOS Assistant application on 31/07/18
 //
 
 import Foundation

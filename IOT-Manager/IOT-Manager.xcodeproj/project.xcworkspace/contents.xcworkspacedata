@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:FIT4002-v1.xcodeproj">
+      location = "self:IOT-Manager.xcodeproj">
    </FileRef>
 </Workspace>

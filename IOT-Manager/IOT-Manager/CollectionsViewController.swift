@@ -1,8 +1,8 @@
 //
 // CollectionsViewController.swift
-// FIT4002-v1
+// IOT-Manager
 //
-// Created by SAP Cloud Platform SDK for iOS Assistant application on 25/07/18
+// Created by SAP Cloud Platform SDK for iOS Assistant application on 31/07/18
 //
 
 import Foundation
@@ -91,7 +91,7 @@ class CollectionsViewController: FUIFormTableViewController {
         case .tIotC7a508a0c7743cdde705:
             let tIotC7a508a0c7743cdde705StoryBoard = UIStoryboard(name: "TIotC7a508a0c7743cdde705", bundle: nil)
             masterViewController = tIotC7a508a0c7743cdde705StoryBoard.instantiateViewController(withIdentifier: "TIotC7a508a0c7743cdde705Master")
-            masterViewController.navigationItem.title = "Dashboard"
+            masterViewController.navigationItem.title = "TIotC7a508a0c7743cdde705"
         case .none:
             masterViewController = UIViewController()
         }
