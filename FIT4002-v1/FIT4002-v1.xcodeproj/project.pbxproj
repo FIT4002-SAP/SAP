@@ -12,7 +12,7 @@
 		128604DA1E55B41600C698B5 /* SAPCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128604D91E55B41600C698B5 /* SAPCommon.framework */; };
 		128604DB1E55B43B00C698B5 /* SAPCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 128604D91E55B41600C698B5 /* SAPCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		128B53061F8E667000E64DF6 /* SnapshotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128B53051F8E667000E64DF6 /* SnapshotViewController.swift */; };
-		12D066CF1F4DDB0E0075EBA4 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		12D066CF1F4DDB0E0075EBA4 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		12E07EF21E96851800460A94 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E07EF11E96851800460A94 /* CollectionType.swift */; };
 		12E84FE31F4ECC4A0061C99E /* SAPFioriFlows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12E84FE21F4ECC3E0061C99E /* SAPFioriFlows.framework */; };
 		12E84FE41F4ECC4A0061C99E /* SAPFioriFlows.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12E84FE21F4ECC3E0061C99E /* SAPFioriFlows.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -41,6 +41,8 @@
 		7A9F6FF61F3883D3000A1815 /* SAPFioriLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9F6FF51F3883D3000A1815 /* SAPFioriLoadingIndicator.swift */; };
 		C342DEDD75F702DB1A3F2971 /* Iotservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A620235A1C59AA32212FED43 /* Iotservice.swift */; };
 		CBCA7A991E3778A9001AF49E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBCA7A9B1E3778A9001AF49E /* Main.storyboard */; };
+		CD0DDEDF2111A12E00D7B56E /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0DDEDE2111A12E00D7B56E /* Dashboard.storyboard */; };
+		CD0DDEE42111A82E00D7B56E /* MON_DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0DDEE22111A82E00D7B56E /* MON_DashboardViewController.swift */; };
 		E43296837B35F5DCF397CD45 /* IotserviceMetadataChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = F177007DE5E7EA43045D1632 /* IotserviceMetadataChanges.swift */; };
 		F1826DB51F0B4D97723C7761 /* IotserviceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83276DF6E6C460E58AF888F2 /* IotserviceFactory.swift */; };
 /* End PBXBuildFile section */
@@ -90,9 +92,11 @@
 		83276DF6E6C460E58AF888F2 /* IotserviceFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IotserviceFactory.swift; path = "Proxy Classes/com.sap.test.demo4/internal/IotserviceFactory.swift"; sourceTree = "<group>"; };
 		86E871EB893DCF99F2C0EA05 /* IotserviceMetadataText.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IotserviceMetadataText.swift; path = "Proxy Classes/com.sap.test.demo4/internal/IotserviceMetadataText.swift"; sourceTree = "<group>"; };
 		889F1FD7A331DA7F3E36198F /* TIotC7a508a0c7743cdde705MasterViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TIotC7a508a0c7743cdde705MasterViewController.swift; path = TIotC7a508a0c7743cdde705/TIotC7a508a0c7743cdde705MasterViewController.swift; sourceTree = "<group>"; };
-		A3AE4A9B7B09A3201DACE72A /* Base */ = {isa = PBXFileReference; includeInIndex = ""; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TIotC7a508a0c7743cdde705.storyboard; sourceTree = "<group>"; };
+		A3AE4A9B7B09A3201DACE72A /* Base */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TIotC7a508a0c7743cdde705.storyboard; sourceTree = "<group>"; };
 		A620235A1C59AA32212FED43 /* Iotservice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Iotservice.swift; path = "Proxy Classes/com.sap.test.demo4/public/Iotservice.swift"; sourceTree = "<group>"; };
 		CB909D801E38CA8800218154 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CD0DDEDE2111A12E00D7B56E /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
+		CD0DDEE22111A82E00D7B56E /* MON_DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MON_DashboardViewController.swift; sourceTree = "<group>"; };
 		F0765007D7FAB9C5B3DC49B9 /* IotserviceMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IotserviceMetadata.swift; path = "Proxy Classes/com.sap.test.demo4/public/IotserviceMetadata.swift"; sourceTree = "<group>"; };
 		F177007DE5E7EA43045D1632 /* IotserviceMetadataChanges.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IotserviceMetadataChanges.swift; path = "Proxy Classes/com.sap.test.demo4/internal/IotserviceMetadataChanges.swift"; sourceTree = "<group>"; };
 		F71E925AF5EE6DB15C91EDA5 /* TIotC7a508a0c7743cdde705DetailViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TIotC7a508a0c7743cdde705DetailViewController.swift; path = TIotC7a508a0c7743cdde705/TIotC7a508a0c7743cdde705DetailViewController.swift; sourceTree = "<group>"; };
@@ -165,9 +169,11 @@
 		75AC42C81DAF80C000B445FF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CD0DDEE22111A82E00D7B56E /* MON_DashboardViewController.swift */,
 				75AC42CE1DAF824D00B445FF /* CollectionsViewController.swift */,
 				128B53051F8E667000E64DF6 /* SnapshotViewController.swift */,
 				F4CC8C8C5C42443B6FFEED72 /* TIotC7a508a0c7743cdde705 */,
+				CD0DDEDE2111A12E00D7B56E /* Dashboard.storyboard */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -303,7 +309,8 @@
 			files = (
 				7A16F06D1FD1B3C700D2FABD /* README.md in Resources */,
 				7A1315C51D4B982000A5DA56 /* LaunchScreen.storyboard in Resources */,
-				12D066CF1F4DDB0E0075EBA4 /* BuildFile in Resources */,
+				12D066CF1F4DDB0E0075EBA4 /* (null) in Resources */,
+				CD0DDEDF2111A12E00D7B56E /* Dashboard.storyboard in Resources */,
 				7A1315C21D4B982000A5DA56 /* Assets.xcassets in Resources */,
 				CBCA7A991E3778A9001AF49E /* Main.storyboard in Resources */,
 				1277F7611F8E66AF0060AF58 /* SAPLogo@2x.png in Resources */,
@@ -319,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				128B53061F8E667000E64DF6 /* SnapshotViewController.swift in Sources */,
+				CD0DDEE42111A82E00D7B56E /* MON_DashboardViewController.swift in Sources */,
 				12E84FE51F4ECF220061C99E /* OnboardingManager.swift in Sources */,
 				7A9F6FF61F3883D3000A1815 /* SAPFioriLoadingIndicator.swift in Sources */,
 				7A26CA1C1F31BA8800B156B6 /* CellCreationHelper.swift in Sources */,
