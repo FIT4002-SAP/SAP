@@ -89,9 +89,14 @@ class CollectionsViewController: FUIFormTableViewController {
         var masterViewController: UIViewController!
         switch self.collections[at.row] {
         case .tIotC7a508a0c7743cdde705:
-            let tIotC7a508a0c7743cdde705StoryBoard = UIStoryboard(name: "TIotC7a508a0c7743cdde705", bundle: nil)
-            masterViewController = tIotC7a508a0c7743cdde705StoryBoard.instantiateViewController(withIdentifier: "TIotC7a508a0c7743cdde705Master")
+            let dashboardStoryBoard = UIStoryboard(name: "Dashboard", bundle: nil)
+            masterViewController = dashboardStoryBoard.instantiateViewController(withIdentifier: "Dashboard")
             masterViewController.navigationItem.title = "Dashboard"
+            if let dashboardViewController = masterViewController as? MON_DashboardViewController
+            {
+                dashboardViewController.iotID = self.collections[at.row]
+                masterViewController = dashboardViewController
+            }
         case .none:
             masterViewController = UIViewController()
         }
