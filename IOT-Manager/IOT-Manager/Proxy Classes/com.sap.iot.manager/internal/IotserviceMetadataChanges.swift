@@ -16,44 +16,65 @@ internal class IotserviceMetadataChanges: ObjectBase {
 
     private class func merge1(metadata: CSDLDocument) {
         Ignore.valueOf_any(metadata)
-        if !IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.isRemoved {
-            IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type = metadata.entityType(withName: "iotmmsxs.iotservice.T_IOT_C7A508A0C7743CDDE705Type")
+        if !IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.isRemoved {
+            IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type = metadata.entityType(withName: "iotmmsxs.iotservice.T_IOT_5272A0AA64CEC578F2F9Type")
         }
-        if !IotserviceMetadata.EntitySets.tIotC7a508a0c7743cdde705.isRemoved {
-            IotserviceMetadata.EntitySets.tIotC7a508a0c7743cdde705 = metadata.entitySet(withName: "T_IOT_C7A508A0C7743CDDE705")
+        if !IotserviceMetadata.EntitySets.tIot5272a0aa64cec578f2f9.isRemoved {
+            IotserviceMetadata.EntitySets.tIot5272a0aa64cec578f2f9 = metadata.entitySet(withName: "T_IOT_5272A0AA64CEC578F2F9")
         }
-        if !TIOTC7A508A0C7743CDDE705Type.genId.isRemoved {
-            TIOTC7A508A0C7743CDDE705Type.genId = IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.property(withName: "GEN_ID")
+        if !TIOT5272A0AA64CEC578F2F9Type.genId.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.genId = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "GEN_ID")
         }
-        if !TIOTC7A508A0C7743CDDE705Type.gDevice.isRemoved {
-            TIOTC7A508A0C7743CDDE705Type.gDevice = IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.property(withName: "G_DEVICE")
+        if !TIOT5272A0AA64CEC578F2F9Type.gDevice.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.gDevice = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "G_DEVICE")
         }
-        if !TIOTC7A508A0C7743CDDE705Type.gCreated.isRemoved {
-            TIOTC7A508A0C7743CDDE705Type.gCreated = IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.property(withName: "G_CREATED")
+        if !TIOT5272A0AA64CEC578F2F9Type.gCreated.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.gCreated = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "G_CREATED")
         }
-        if !TIOTC7A508A0C7743CDDE705Type.cTimestamp.isRemoved {
-            TIOTC7A508A0C7743CDDE705Type.cTimestamp = IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.property(withName: "C_TIMESTAMP")
+        if !TIOT5272A0AA64CEC578F2F9Type.cTimestamp.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cTimestamp = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_TIMESTAMP")
         }
-        if !TIOTC7A508A0C7743CDDE705Type.cSensorgyrox.isRemoved {
-            TIOTC7A508A0C7743CDDE705Type.cSensorgyrox = IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.property(withName: "C_SENSORGYROX")
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensoraccx.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensoraccx = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSORACCX")
         }
-        if !TIOTC7A508A0C7743CDDE705Type.cSensorgyroy.isRemoved {
-            TIOTC7A508A0C7743CDDE705Type.cSensorgyroy = IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.property(withName: "C_SENSORGYROY")
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensoraccy.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensoraccy = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSORACCY")
         }
-        if !TIOTC7A508A0C7743CDDE705Type.cSensorgyroz.isRemoved {
-            TIOTC7A508A0C7743CDDE705Type.cSensorgyroz = IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.property(withName: "C_SENSORGYROZ")
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensoraccz.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensoraccz = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSORACCZ")
         }
-        if !TIOTC7A508A0C7743CDDE705Type.cSensoraccx.isRemoved {
-            TIOTC7A508A0C7743CDDE705Type.cSensoraccx = IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.property(withName: "C_SENSORACCX")
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensorbarometric.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensorbarometric = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSORBAROMETRIC")
         }
-        if !TIOTC7A508A0C7743CDDE705Type.cSensoraccy.isRemoved {
-            TIOTC7A508A0C7743CDDE705Type.cSensoraccy = IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.property(withName: "C_SENSORACCY")
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensorgyrox.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensorgyrox = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSORGYROX")
         }
-        if !TIOTC7A508A0C7743CDDE705Type.cSensoraccz.isRemoved {
-            TIOTC7A508A0C7743CDDE705Type.cSensoraccz = IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.property(withName: "C_SENSORACCZ")
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensorgyroy.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensorgyroy = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSORGYROY")
         }
-        if !TIOTC7A508A0C7743CDDE705Type.cSensorbarometric.isRemoved {
-            TIOTC7A508A0C7743CDDE705Type.cSensorbarometric = IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.property(withName: "C_SENSORBAROMETRIC")
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensorgyroz.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensorgyroz = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSORGYROZ")
+        }
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensorhumidity.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensorhumidity = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSORHUMIDITY")
+        }
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensormagx.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensormagx = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSORMAGX")
+        }
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensormagy.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensormagy = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSORMAGY")
+        }
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensormagz.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensormagz = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSORMAGZ")
+        }
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensorobjecttemp.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensorobjecttemp = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSOROBJECTTEMP")
+        }
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensoroptical.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensoroptical = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSOROPTICAL")
+        }
+        if !TIOT5272A0AA64CEC578F2F9Type.cSensortemp.isRemoved {
+            TIOT5272A0AA64CEC578F2F9Type.cSensortemp = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "C_SENSORTEMP")
         }
     }
 }

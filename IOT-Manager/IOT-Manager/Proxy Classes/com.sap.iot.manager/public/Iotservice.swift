@@ -9,14 +9,14 @@ open class Iotservice<Provider: DataServiceProvider>: DataService<Provider> {
         self.provider.metadata = IotserviceMetadata.document
     }
 
-    open func fetchTIOTC7A508A0C7743CDDE705Type(matching query: DataQuery) throws -> TIOTC7A508A0C7743CDDE705Type {
-        return try CastRequired<TIOTC7A508A0C7743CDDE705Type>.from(self.executeQuery(query.fromDefault(IotserviceMetadata.EntitySets.tIotC7a508a0c7743cdde705)).requiredEntity())
+    open func fetchTIOT5272A0AA64CEC578F2F9Type(matching query: DataQuery) throws -> TIOT5272A0AA64CEC578F2F9Type {
+        return try CastRequired<TIOT5272A0AA64CEC578F2F9Type>.from(self.executeQuery(query.fromDefault(IotserviceMetadata.EntitySets.tIot5272a0aa64cec578f2f9)).requiredEntity())
     }
 
-    open func fetchTIOTC7A508A0C7743CDDE705Type(matching query: DataQuery, completionHandler: @escaping (TIOTC7A508A0C7743CDDE705Type?, Error?) -> Void) {
+    open func fetchTIOT5272A0AA64CEC578F2F9Type(matching query: DataQuery, completionHandler: @escaping (TIOT5272A0AA64CEC578F2F9Type?, Error?) -> Void) {
         self.addBackgroundOperation {
             do {
-                let result: TIOTC7A508A0C7743CDDE705Type = try self.fetchTIOTC7A508A0C7743CDDE705Type(matching: query)
+                let result: TIOT5272A0AA64CEC578F2F9Type = try self.fetchTIOT5272A0AA64CEC578F2F9Type(matching: query)
                 self.completionQueue.addOperation {
                     completionHandler(result, nil)
                 }
@@ -28,14 +28,14 @@ open class Iotservice<Provider: DataServiceProvider>: DataService<Provider> {
         }
     }
 
-    open func fetchTIotC7a508a0c7743cdde705(matching query: DataQuery = DataQuery()) throws -> Array<TIOTC7A508A0C7743CDDE705Type> {
-        return try TIOTC7A508A0C7743CDDE705Type.array(from: self.executeQuery(query.fromDefault(IotserviceMetadata.EntitySets.tIotC7a508a0c7743cdde705)).entityList())
+    open func fetchTIot5272a0aa64cec578f2f9(matching query: DataQuery = DataQuery()) throws -> Array<TIOT5272A0AA64CEC578F2F9Type> {
+        return try TIOT5272A0AA64CEC578F2F9Type.array(from: self.executeQuery(query.fromDefault(IotserviceMetadata.EntitySets.tIot5272a0aa64cec578f2f9)).entityList())
     }
 
-    open func fetchTIotC7a508a0c7743cdde705(matching query: DataQuery = DataQuery(), completionHandler: @escaping (Array<TIOTC7A508A0C7743CDDE705Type>?, Error?) -> Void) {
+    open func fetchTIot5272a0aa64cec578f2f9(matching query: DataQuery = DataQuery(), completionHandler: @escaping (Array<TIOT5272A0AA64CEC578F2F9Type>?, Error?) -> Void) {
         self.addBackgroundOperation {
             do {
-                let result: Array<TIOTC7A508A0C7743CDDE705Type> = try self.fetchTIotC7a508a0c7743cdde705(matching: query)
+                let result: Array<TIOT5272A0AA64CEC578F2F9Type> = try self.fetchTIot5272a0aa64cec578f2f9(matching: query)
                 self.completionQueue.addOperation {
                     completionHandler(result, nil)
                 }
@@ -56,13 +56,13 @@ open class Iotservice<Provider: DataServiceProvider>: DataService<Provider> {
         }
     }
 
-    @available(swift, deprecated: 4.0, renamed: "fetchTIotC7a508a0c7743cdde705")
-    open func tIotC7a508a0c7743cdde705(query: DataQuery = DataQuery()) throws -> Array<TIOTC7A508A0C7743CDDE705Type> {
-        return try self.fetchTIotC7a508a0c7743cdde705(matching: query)
+    @available(swift, deprecated: 4.0, renamed: "fetchTIot5272a0aa64cec578f2f9")
+    open func tIot5272a0aa64cec578f2f9(query: DataQuery = DataQuery()) throws -> Array<TIOT5272A0AA64CEC578F2F9Type> {
+        return try self.fetchTIot5272a0aa64cec578f2f9(matching: query)
     }
 
-    @available(swift, deprecated: 4.0, renamed: "fetchTIotC7a508a0c7743cdde705")
-    open func tIotC7a508a0c7743cdde705(query: DataQuery = DataQuery(), completionHandler: @escaping (Array<TIOTC7A508A0C7743CDDE705Type>?, Error?) -> Void) {
-        self.fetchTIotC7a508a0c7743cdde705(matching: query, completionHandler: completionHandler)
+    @available(swift, deprecated: 4.0, renamed: "fetchTIot5272a0aa64cec578f2f9")
+    open func tIot5272a0aa64cec578f2f9(query: DataQuery = DataQuery(), completionHandler: @escaping (Array<TIOT5272A0AA64CEC578F2F9Type>?, Error?) -> Void) {
+        self.fetchTIot5272a0aa64cec578f2f9(matching: query, completionHandler: completionHandler)
     }
 }

@@ -1,8 +1,8 @@
 //
-// TIotC7a508a0c7743cdde705MasterViewController.swift
+// TIot5272a0aa64cec578f2f9MasterViewController.swift
 // IOT-Manager
 //
-// Created by SAP Cloud Platform SDK for iOS Assistant application on 31/07/18
+// Created by SAP Cloud Platform SDK for iOS Assistant application on 04/08/18
 //
 
 import Foundation
@@ -11,14 +11,14 @@ import SAPFiori
 import SAPFoundation
 import SAPOData
 
-class TIotC7a508a0c7743cdde705MasterViewController: FUIFormTableViewController, SAPFioriLoadingIndicator {
+class TIot5272a0aa64cec578f2f9MasterViewController: FUIFormTableViewController, SAPFioriLoadingIndicator {
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var iotservice: Iotservice<OnlineODataProvider> {
         return self.appDelegate.iotservice
     }
 
-    private var entities: [TIOTC7A508A0C7743CDDE705Type] = [TIOTC7A508A0C7743CDDE705Type]()
-    private let logger = Logger.shared(named: "TIOTC7A508A0C7743CDDE705TypeMasterViewConterollerLogger")
+    private var entities: [TIOT5272A0AA64CEC578F2F9Type] = [TIOT5272A0AA64CEC578F2F9Type]()
+    private let logger = Logger.shared(named: "TIOT5272A0AA64CEC578F2F9TypeMasterViewConterollerLogger")
     private let okTitle = NSLocalizedString("keyOkButtonTitle",
                                             value: "OK",
                                             comment: "XBUT: Title of OK button.")
@@ -57,8 +57,8 @@ class TIotC7a508a0c7743cdde705MasterViewController: FUIFormTableViewController, 
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tiotc7a508a0c7743cdde705type = self.entities[indexPath.row]
-        let cell = CellCreationHelper.objectCellWithNonEditableContent(tableView: tableView, indexPath: indexPath, key: "GEN_ID", value: "\(tiotc7a508a0c7743cdde705type.genId!)")
+        let tiot5272a0aa64cec578f2f9type = self.entities[indexPath.row]
+        let cell = CellCreationHelper.objectCellWithNonEditableContent(tableView: tableView, indexPath: indexPath, key: "GEN_ID", value: "\(tiot5272a0aa64cec578f2f9type.genId!)")
         return cell
     }
 
@@ -88,12 +88,12 @@ class TIotC7a508a0c7743cdde705MasterViewController: FUIFormTableViewController, 
     func requestEntities(completionHandler: @escaping (Error?) -> Void) {
         // Only request the first 20 values. If you want to modify the requested entities, you can do it here.
         let query = DataQuery().selectAll().top(20)
-        self.iotservice.fetchTIotC7a508a0c7743cdde705(matching: query) { tIotC7a508a0c7743cdde705, error in
-            guard let tIotC7a508a0c7743cdde705 = tIotC7a508a0c7743cdde705 else {
+        self.iotservice.fetchTIot5272a0aa64cec578f2f9(matching: query) { tIot5272a0aa64cec578f2f9, error in
+            guard let tIot5272a0aa64cec578f2f9 = tIot5272a0aa64cec578f2f9 else {
                 completionHandler(error!)
                 return
             }
-            self.entities = tIotC7a508a0c7743cdde705
+            self.entities = tIot5272a0aa64cec578f2f9
             completionHandler(nil)
         }
     }
@@ -108,7 +108,7 @@ class TIotC7a508a0c7743cdde705MasterViewController: FUIFormTableViewController, 
             }
             self.logger.info("Showing details of the chosen element.")
             let selectedEntity = self.entities[indexPath.row]
-            let detailViewController = segue.destination as! TIotC7a508a0c7743cdde705DetailViewController
+            let detailViewController = segue.destination as! TIot5272a0aa64cec578f2f9DetailViewController
             detailViewController.entity = selectedEntity
             detailViewController.navigationItem.leftItemsSupplementBackButton = true
             detailViewController.navigationItem.title = self.entities[(self.tableView.indexPathForSelectedRow?.row)!].genId ?? ""
@@ -118,7 +118,7 @@ class TIotC7a508a0c7743cdde705MasterViewController: FUIFormTableViewController, 
             // Show the Detail view with a new Entity, which can be filled to create on the server
             self.logger.info("Showing view to add new entity.")
             let dest = segue.destination as! UINavigationController
-            let detailViewController = dest.viewControllers[0] as! TIotC7a508a0c7743cdde705DetailViewController
+            let detailViewController = dest.viewControllers[0] as! TIot5272a0aa64cec578f2f9DetailViewController
             detailViewController.title = NSLocalizedString("keyAddEntityTitle", value: "Add Entity", comment: "XTIT: Title of add new entity screen.")
             let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: detailViewController, action: #selector(detailViewController.createEntity))
             detailViewController.navigationItem.rightBarButtonItem = doneButton
@@ -175,7 +175,7 @@ class TIotC7a508a0c7743cdde705MasterViewController: FUIFormTableViewController, 
     }
 }
 
-extension TIotC7a508a0c7743cdde705MasterViewController: EntitySetUpdaterDelegate {
+extension TIot5272a0aa64cec578f2f9MasterViewController: EntitySetUpdaterDelegate {
     func entitySetHasChanged() {
         self.updateTable()
     }

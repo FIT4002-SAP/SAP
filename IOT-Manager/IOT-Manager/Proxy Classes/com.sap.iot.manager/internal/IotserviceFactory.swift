@@ -5,7 +5,7 @@ import SAPOData
 
 internal class IotserviceFactory {
     static func registerAll() throws {
-        IotserviceMetadata.EntityTypes.tIOTC7A508A0C7743CDDE705Type.registerFactory(ObjectFactory.with(create: { TIOTC7A508A0C7743CDDE705Type(withDefaults: false) }, createWithDecoder: { d in try TIOTC7A508A0C7743CDDE705Type(from: d) }))
+        IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.registerFactory(ObjectFactory.with(create: { TIOT5272A0AA64CEC578F2F9Type(withDefaults: false) }, createWithDecoder: { d in try TIOT5272A0AA64CEC578F2F9Type(from: d) }))
         IotserviceStaticResolver.resolve()
     }
 }

@@ -2,7 +2,7 @@
 // CellCreationHelper.swift
 // IOT-Manager
 //
-// Created by SAP Cloud Platform SDK for iOS Assistant application on 31/07/18
+// Created by SAP Cloud Platform SDK for iOS Assistant application on 04/08/18
 //
 
 import Foundation

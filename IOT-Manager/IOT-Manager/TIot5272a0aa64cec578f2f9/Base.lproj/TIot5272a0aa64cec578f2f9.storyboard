@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a59-Mb-pSm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a59-Mb-pSm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Master-->
         <scene sceneID="RKw-IL-dqd">
             <objects>
-                <tableViewController restorationIdentifier="TIotC7a508a0c7743cdde705Master" storyboardIdentifier="TIotC7a508a0c7743cdde705Master" title="Master" id="a59-Mb-pSm" customClass="TIotC7a508a0c7743cdde705MasterViewController" customModule="IOT_Manager" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="TIot5272a0aa64cec578f2f9Master" storyboardIdentifier="TIot5272a0aa64cec578f2f9Master" title="Master" id="a59-Mb-pSm" customClass="TIot5272a0aa64cec578f2f9MasterViewController" customModule="IOT_Manager" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nUO-hq-XXj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="AbA-MP-qfJ" kind="show" identifier="showDetail" id="7cb-bc-a8c"/>
+                                    <segue destination="AbA-MP-qfJ" kind="show" identifier="showDetail" id="b9e-33-0e7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -35,10 +35,10 @@
                             <outlet property="delegate" destination="a59-Mb-pSm" id="rTS-ea-PgO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="KGn-oz-Wwf">
+                    <navigationItem key="navigationItem" title="" id="KGn-oz-Wwf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FVD-WG-jSQ">
                             <connections>
-                                <segue destination="RAN-fi-s37" kind="presentation" identifier="addEntity" modalPresentationStyle="formSheet" id="1Mp-uy-6Yx"/>
+                                <segue destination="RAN-fi-s37" kind="presentation" modalPresentationStyle="formSheet" identifier="addEntity" id="1Mp-uy-6Yx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -54,7 +54,7 @@
         <!--Detail-->
         <scene sceneID="k9g-RP-XuX">
             <objects>
-                <tableViewController title="Detail" id="AbA-MP-qfJ" customClass="TIotC7a508a0c7743cdde705DetailViewController" customModule="IOT_Manager" sceneMemberID="viewController">
+                <tableViewController title="Detail" id="AbA-MP-qfJ" customClass="TIot5272a0aa64cec578f2f9DetailViewController" customModule="IOT_Manager" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="msU-WP-HoT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,7 +74,7 @@
                             <outlet property="delegate" destination="AbA-MP-qfJ" id="QOm-q4-gCY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="sht-lU-R1A">
+                    <navigationItem key="navigationItem" title="" id="sht-lU-R1A">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="HZs-jd-fwP">
                             <connections>
                                 <segue destination="8XE-iP-P2X" kind="presentation" identifier="updateEntity" modalPresentationStyle="formSheet" id="Vnb-38-Ux4"/>
@@ -91,7 +91,7 @@
             <objects>
                 <navigationController id="RAN-fi-s37" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iqg-Xs-vAK">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -118,8 +118,9 @@
             </objects>
             <point key="canvasLocation" x="1334" y="-595"/>
         </scene>
+
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7cb-bc-a8c"/>
+        <segue reference="b9e-33-0e7"/>
     </inferredMetricsTieBreakers>
 </document>

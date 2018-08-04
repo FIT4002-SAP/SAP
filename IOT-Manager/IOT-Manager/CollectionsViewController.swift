@@ -2,7 +2,7 @@
 // CollectionsViewController.swift
 // IOT-Manager
 //
-// Created by SAP Cloud Platform SDK for iOS Assistant application on 31/07/18
+// Created by SAP Cloud Platform SDK for iOS Assistant application on 04/08/18
 //
 
 import Foundation
@@ -88,10 +88,10 @@ class CollectionsViewController: FUIFormTableViewController {
         // Load the EntityType specific ViewController from the specific storyboard
         var masterViewController: UIViewController!
         switch self.collections[at.row] {
-        case .tIotC7a508a0c7743cdde705:
-            let tIotC7a508a0c7743cdde705StoryBoard = UIStoryboard(name: "TIotC7a508a0c7743cdde705", bundle: nil)
-            masterViewController = tIotC7a508a0c7743cdde705StoryBoard.instantiateViewController(withIdentifier: "TIotC7a508a0c7743cdde705Master")
-            masterViewController.navigationItem.title = "TIotC7a508a0c7743cdde705"
+        case .tIot5272a0aa64cec578f2f9:
+            let tIot5272a0aa64cec578f2f9StoryBoard = UIStoryboard(name: "TIot5272a0aa64cec578f2f9", bundle: nil)
+            masterViewController = tIot5272a0aa64cec578f2f9StoryBoard.instantiateViewController(withIdentifier: "TIot5272a0aa64cec578f2f9Master")
+            masterViewController.navigationItem.title = "TIot5272a0aa64cec578f2f9"
         case .none:
             masterViewController = UIViewController()
         }

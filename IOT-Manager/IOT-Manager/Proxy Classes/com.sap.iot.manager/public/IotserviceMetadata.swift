@@ -13,10 +13,10 @@ public class IotserviceMetadata {
     }
 
     public class EntityTypes {
-        public static var tIOTC7A508A0C7743CDDE705Type: EntityType = IotserviceMetadataParser.parsed.entityType(withName: "iotmmsxs.iotservice.T_IOT_C7A508A0C7743CDDE705Type")
+        public static var tIOT5272A0AA64CEC578F2F9Type: EntityType = IotserviceMetadataParser.parsed.entityType(withName: "iotmmsxs.iotservice.T_IOT_5272A0AA64CEC578F2F9Type")
     }
 
     public class EntitySets {
-        public static var tIotC7a508a0c7743cdde705: EntitySet = IotserviceMetadataParser.parsed.entitySet(withName: "T_IOT_C7A508A0C7743CDDE705")
+        public static var tIot5272a0aa64cec578f2f9: EntitySet = IotserviceMetadataParser.parsed.entitySet(withName: "T_IOT_5272A0AA64CEC578F2F9")
     }
 }
