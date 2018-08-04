@@ -16,7 +16,7 @@ SAPFoundation.framework
 SAPOData.framework
 SAPOfflineOData.framework
 ```
-3. Put the .framework files here: `./FIT4002-v1/*.framework`
+3. Put the .framework files here: `./IOT-Manager/*.framework`
 
 # Pull requests
 ## Making a pull request
