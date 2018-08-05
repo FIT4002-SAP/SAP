@@ -1,6 +1,6 @@
 set -e
 
-ZIP_URL=https://s3-ap-southeast-2.amazonaws.com/fit4002-intelligence-content-2/frameworks.zip;
+ZIP_URL=https://s3-ap-southeast-2.amazonaws.com/fit4002-intelligence-content-2/frameworks_1.1.zip;
 
 echo 'Downloading dependencies...';
 curl -o frameworks.zip $ZIP_URL;
