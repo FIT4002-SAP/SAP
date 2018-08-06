@@ -6,7 +6,7 @@
 
 ### Dependencies
 #### How to download prerequisite frameworks
-1. Download: https://drive.google.com/file/d/1eoNza-pl9REl77vCTxnxqFMZIxTVc9-F/view?usp=sharing
+1. Download: https://drive.google.com/file/d/1pWl--8kbnfEyYeek4jdNAdWoK8zqaiK9/view?usp=sharing
 2. Unzip the .zip file; it contains:
 ```
 SAPCommon.framework
