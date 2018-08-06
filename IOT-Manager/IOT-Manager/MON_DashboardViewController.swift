@@ -62,6 +62,27 @@ class MON_DashboardViewController: FUIFormTableViewController {
             let tIot5272a0aa64cec578f2f9StoryBoard = UIStoryboard(name: "TIot5272a0aa64cec578f2f9", bundle: nil)
             masterViewController = tIot5272a0aa64cec578f2f9StoryBoard.instantiateViewController(withIdentifier: "TIot5272a0aa64cec578f2f9Master")
             masterViewController.navigationItem.title = "TIot5272a0aa64cec578f2f9"
+        case .cSensorAmbientTemp:
+            let dataHistoryStoryBoard = UIStoryboard(name: "MON_DataHistory", bundle: nil)
+            masterViewController = dataHistoryStoryBoard.instantiateViewController(withIdentifier: "DataHistory")
+            if let masterViewController = masterViewController as? MON_DataHistoryViewController {
+                masterViewController.entityType = IOTEntity.cSensorAmbientTemp
+            }
+            masterViewController.navigationItem.title = "Temperature History"
+        case .cSensorOptical:
+            let dataHistoryStoryBoard = UIStoryboard(name: "MON_DataHistory", bundle: nil)
+            masterViewController = dataHistoryStoryBoard.instantiateViewController(withIdentifier: "DataHistory")
+            if let masterViewController = masterViewController as? MON_DataHistoryViewController {
+                masterViewController.entityType = IOTEntity.cSensorOptical
+            }
+            masterViewController.navigationItem.title = "Optical History"
+        case .cSensorHumidity:
+            let dataHistoryStoryBoard = UIStoryboard(name: "MON_DataHistory", bundle: nil)
+            masterViewController = dataHistoryStoryBoard.instantiateViewController(withIdentifier: "DataHistory")
+            if let masterViewController = masterViewController as? MON_DataHistoryViewController {
+                masterViewController.entityType = IOTEntity.cSensorHumidity
+            }
+            masterViewController.navigationItem.title = "Humidity History"
         case .none:
             masterViewController = UIViewController()
         default:
@@ -74,7 +95,4 @@ class MON_DashboardViewController: FUIFormTableViewController {
         rightNavigationController.viewControllers = [masterViewController]
         self.splitViewController?.showDetailViewController(rightNavigationController, sender: nil)
     }
-    
-    
-
 }
