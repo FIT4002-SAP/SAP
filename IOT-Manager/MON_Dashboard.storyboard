@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,8 +35,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Dashboard" id="EN7-vh-9xZ"/>
                     <connections>
-                        <segue destination="5DJ-mX-AfB" kind="show" identifier="dataHistoryCellSelected" id="hZU-qR-80N"/>
                         <segue destination="xBe-vR-jtF" kind="show" identifier="allDataCellSelected" id="4gL-3l-q0O"/>
+                        <segue destination="hc6-iP-iH4" kind="show" identifier="dataHistoryCellSelected" id="IXm-Xp-SX8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOJ-AE-n7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -43,33 +44,43 @@
             <point key="canvasLocation" x="577" y="160"/>
         </scene>
         <!--Data History View Controller-->
-        <scene sceneID="EjB-T6-Ye6">
+        <scene sceneID="uYp-rn-OWV">
             <objects>
-                <tableViewController storyboardIdentifier="dataHistoryViewController" title="Data History View Controller" id="5DJ-mX-AfB" customClass="MON_DataHistoryViewController" customModule="IOT_Manager" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pda-0X-5u1">
+                <viewController id="hc6-iP-iH4" customClass="MON_DataHistoryViewController" customModule="IOT_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9ds-s2-boY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9DW-db-Era">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CellID" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FUIObjectTableViewCell" id="aHE-AD-oCN" customClass="FUIObjectTableViewCell" customModule="SAPFiori">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aHE-AD-oCN" id="aZT-N3-tua">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="hc6-iP-iH4" id="ojs-We-hCI"/>
+                                    <outlet property="delegate" destination="hc6-iP-iH4" id="Y8L-GN-TbJ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CellID" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FUIObjectTableViewCell" id="7uP-KM-6vN" customClass="FUIObjectTableViewCell" customModule="SAPFiori">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7uP-KM-6vN" id="Hoi-jU-Nf6">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="5DJ-mX-AfB" id="yz7-Pa-Vxq"/>
-                            <outlet property="delegate" destination="5DJ-mX-AfB" id="uEr-32-prh"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="CvV-Rn-BfE"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U5o-1u-IfB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <viewLayoutGuide key="safeArea" id="To0-9i-lvN"/>
+                    </view>
+                    <connections>
+                        <outlet property="historyTableView" destination="9DW-db-Era" id="qLU-10-8mL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bCd-Ay-kmz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1801" y="-115"/>
+            <point key="canvasLocation" x="1801" y="-95"/>
         </scene>
         <!--TIot5272a0aa64cec578f2f9-->
         <scene sceneID="GRP-qJ-9iM">
@@ -78,22 +89,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kWO-6i-jjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1800" y="447"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Bvn-FI-jMd">
-            <objects>
-                <navigationController id="GAk-9V-jUB" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sWa-bi-p9v">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="5DJ-mX-AfB" kind="relationship" relationship="rootViewController" id="ltm-a8-Tfd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RH0-5X-aqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1801" y="-875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hk3-RS-Jdy">
@@ -112,7 +107,4 @@
             <point key="canvasLocation" x="-375" y="160"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="ltm-a8-Tfd"/>
-    </inferredMetricsTieBreakers>
 </document>

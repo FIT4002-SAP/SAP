@@ -11,7 +11,9 @@ import SAPFiori
 import SAPOData
 import SAPCommon
 
-class MON_DataHistoryViewController: FUIFormTableViewController, SAPFioriLoadingIndicator {
+class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SAPFioriLoadingIndicator {
+    
+    @IBOutlet weak var historyTableView: UITableView!
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var iotservice: Iotservice<OnlineODataProvider> {
@@ -34,22 +36,22 @@ class MON_DataHistoryViewController: FUIFormTableViewController, SAPFioriLoading
         super.viewDidLoad()
         self.preferredContentSize = CGSize(width: 320, height: 480)
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 44
+        self.historyTableView.rowHeight = UITableViewAutomaticDimension
+        self.historyTableView.estimatedRowHeight = 44
         updateTable()
     }
     
     // MARK: - Table view data source
     
-    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return self.data.count
     }
     
-    override func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
+    func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
         return false
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CellCreationHelper.objectCellWithNonEditableContent(tableView: tableView, indexPath: indexPath, key: self.timestamps[indexPath.row], value: self.data[indexPath.row])
         cell.isMomentarySelection = false
         // TODO: disable arrow on side of cell
@@ -129,7 +131,7 @@ class MON_DataHistoryViewController: FUIFormTableViewController, SAPFioriLoading
                 return
             }
             OperationQueue.main.addOperation({
-                self.tableView.reloadData()
+                self.historyTableView.reloadData()
                 self.logger.info("Table updated successfully!")
             })
         }
@@ -140,7 +142,7 @@ class MON_DataHistoryViewController: FUIFormTableViewController, SAPFioriLoading
         oq.addOperation({
             self.loadData {
                 OperationQueue.main.addOperation({
-                    self.refreshControl?.endRefreshing()
+                    self.historyTableView.refreshControl?.endRefreshing()
                 })
             }
         })
