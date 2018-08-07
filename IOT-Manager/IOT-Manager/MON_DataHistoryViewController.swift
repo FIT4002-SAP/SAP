@@ -69,14 +69,29 @@ class MON_DataHistoryViewController: FUIFormTableViewController, SAPFioriLoading
             
             for entity in tIot5272a0aa64cec578f2f9 {
                 switch self.entityType! {
-                case IOTEntity.cSensorAmbientTemp:
-                    self.data.append("\(String(entity.cSensortemp!)) C")
+                case IOTEntity.cSensorAcc:
+                    self.data.append("X: \(String(entity.cSensoraccx!)) Y: \(String(entity.cSensoraccy!)) Z: \(String(entity.cSensoraccz!))")
+                    self.timestamps.append((entity.cTimestamp?.toString())!)
+                case IOTEntity.cSensorBarometric:
+                    self.data.append("\(String(entity.cSensorbarometric!)) hPa")
+                    self.timestamps.append((entity.cTimestamp?.toString())!)
+                case IOTEntity.cSensorGyro:
+                    self.data.append("X: \(String(entity.cSensorgyrox!)) Y: \(String(entity.cSensorgyroy!)) Z: \(String(entity.cSensorgyroz!))")
+                    self.timestamps.append((entity.cTimestamp?.toString())!)
+                case IOTEntity.cSensorHumidity:
+                    self.data.append("\(String(entity.cSensorhumidity!)) %")
+                    self.timestamps.append((entity.cTimestamp?.toString())!)
+                case IOTEntity.cSensorMag:
+                    self.data.append("X: \(String(entity.cSensormagx!)) Y: \(String(entity.cSensormagy!)) Z: \(String(entity.cSensormagz!))")
+                    self.timestamps.append((entity.cTimestamp?.toString())!)
+                case IOTEntity.cSensorObjectTemp:
+                    self.data.append("\(String(entity.cSensorobjecttemp!)) C")
                     self.timestamps.append((entity.cTimestamp?.toString())!)
                 case IOTEntity.cSensorOptical:
                     self.data.append("\(String(entity.cSensoroptical!)) LUX")
                     self.timestamps.append((entity.cTimestamp?.toString())!)
-                case IOTEntity.cSensorHumidity:
-                    self.data.append("\(String(entity.cSensorhumidity!)) %")
+                case IOTEntity.cSensorAmbientTemp:
+                    self.data.append("\(String(entity.cSensortemp!)) C")
                     self.timestamps.append((entity.cTimestamp?.toString())!)
                 default:
                     break

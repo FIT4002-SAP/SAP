@@ -25,6 +25,45 @@ class MON_DashboardViewController: FUIFormTableViewController {
         self.tableView.estimatedRowHeight = 44
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let selectedIndex = self.tableView.indexPath(for: sender as! UITableViewCell)
+        if segue.identifier == "dataHistoryCellSelected" {
+            let vc = segue.destination as! MON_DataHistoryViewController
+            switch selectedIndex?.row {
+            case 1:
+                vc.entityType = IOTEntity.cSensorAcc
+                vc.navigationItem.title = "Accelerometer History"
+            case 2:
+                vc.entityType = IOTEntity.cSensorBarometric
+                vc.navigationItem.title = "Barometric History"
+            case 3:
+                vc.entityType = IOTEntity.cSensorGyro
+                vc.navigationItem.title = "Gyroscope History"
+            case 4:
+                vc.entityType = IOTEntity.cSensorHumidity
+                vc.navigationItem.title = "Humidity History"
+            case 5:
+                vc.entityType = IOTEntity.cSensorMag
+                vc.navigationItem.title = "Magnometer History"
+            case 6:
+                vc.entityType = IOTEntity.cSensorObjectTemp
+                vc.navigationItem.title = "Object Temperature History"
+            case 7:
+                vc.entityType = IOTEntity.cSensorOptical
+                vc.navigationItem.title = "Optical History"
+            case 8:
+                vc.entityType = IOTEntity.cSensorAmbientTemp
+                vc.navigationItem.title = "Ambient Temperature History"
+            default:
+                break
+            }
+        }
+        else if segue.identifier == "allDataCellSelected" {
+            let vc = segue.destination as! TIot5272a0aa64cec578f2f9MasterViewController
+            vc.navigationItem.title = "TIot5272a0aa64cec578f2f9"
+        }
+    }
+    
     // MARK: - UITableViewDelegate
     
     override func numberOfSections(in _: UITableView) -> Int {
@@ -48,51 +87,11 @@ class MON_DashboardViewController: FUIFormTableViewController {
     }
     
     override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.selectedIndex = indexPath
-        self.collectionSelected(at: indexPath)
-    }
-    
-    // CollectionType selection helper
-    
-    private func collectionSelected(at: IndexPath) {
-        // Load the EntityType specific ViewController from the specific storyboard
-        var masterViewController: UIViewController!
-        switch self.entities[at.row] {
-        case .allData:
-            let tIot5272a0aa64cec578f2f9StoryBoard = UIStoryboard(name: "TIot5272a0aa64cec578f2f9", bundle: nil)
-            masterViewController = tIot5272a0aa64cec578f2f9StoryBoard.instantiateViewController(withIdentifier: "TIot5272a0aa64cec578f2f9Master")
-            masterViewController.navigationItem.title = "TIot5272a0aa64cec578f2f9"
-        case .cSensorAmbientTemp:
-            let dataHistoryStoryBoard = UIStoryboard(name: "MON_DataHistory", bundle: nil)
-            masterViewController = dataHistoryStoryBoard.instantiateViewController(withIdentifier: "DataHistory")
-            if let masterViewController = masterViewController as? MON_DataHistoryViewController {
-                masterViewController.entityType = IOTEntity.cSensorAmbientTemp
-            }
-            masterViewController.navigationItem.title = "Temperature History"
-        case .cSensorOptical:
-            let dataHistoryStoryBoard = UIStoryboard(name: "MON_DataHistory", bundle: nil)
-            masterViewController = dataHistoryStoryBoard.instantiateViewController(withIdentifier: "DataHistory")
-            if let masterViewController = masterViewController as? MON_DataHistoryViewController {
-                masterViewController.entityType = IOTEntity.cSensorOptical
-            }
-            masterViewController.navigationItem.title = "Optical History"
-        case .cSensorHumidity:
-            let dataHistoryStoryBoard = UIStoryboard(name: "MON_DataHistory", bundle: nil)
-            masterViewController = dataHistoryStoryBoard.instantiateViewController(withIdentifier: "DataHistory")
-            if let masterViewController = masterViewController as? MON_DataHistoryViewController {
-                masterViewController.entityType = IOTEntity.cSensorHumidity
-            }
-            masterViewController.navigationItem.title = "Humidity History"
-        case .none:
-            masterViewController = UIViewController()
+        switch indexPath.row {
+        case 0:
+            performSegue(withIdentifier: "allDataCellSelected", sender: self.tableView.cellForRow(at: indexPath))
         default:
-            return
+            performSegue(withIdentifier: "dataHistoryCellSelected", sender: self.tableView.cellForRow(at: indexPath))
         }
-        
-        // Load the NavigationController and present with the EntityType specific ViewController
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let rightNavigationController = mainStoryBoard.instantiateViewController(withIdentifier: "RightNavigationController") as! UINavigationController
-        rightNavigationController.viewControllers = [masterViewController]
-        self.splitViewController?.showDetailViewController(rightNavigationController, sender: nil)
     }
 }
