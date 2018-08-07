@@ -11,9 +11,10 @@ import SAPFiori
 import SAPOData
 import SAPCommon
 
-class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SAPFioriLoadingIndicator {
+class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SAPFioriLoadingIndicator {
     
     @IBOutlet weak var historyTableView: UITableView!
+    @IBOutlet weak var chartCollectionView: UICollectionView!
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var iotservice: Iotservice<OnlineODataProvider> {
@@ -23,6 +24,8 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
     private var data: [String] = [String]()
     private var timestamps: [String] = [String]()
     var entityType: IOTEntity?
+    
+    var cardData = ChartCardData.items[0]
     
     private let logger = Logger.shared(named: "MON_DataHistoryViewControllerLogger")
     private let okTitle = NSLocalizedString("keyOkButtonTitle",
@@ -38,6 +41,15 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
         
         self.historyTableView.rowHeight = UITableViewAutomaticDimension
         self.historyTableView.estimatedRowHeight = 44
+        
+        let flowLayout = FUICollectionViewLayout.horizontalScroll
+        flowLayout.itemSize = CGSize(width: 370, height: 192) // Card size according design guideline
+        chartCollectionView.collectionViewLayout = flowLayout
+        chartCollectionView.register(FUIChartCardCollectionViewCell.self,
+                                forCellWithReuseIdentifier: FUIChartCardCollectionViewCell.reuseIdentifier)
+        chartCollectionView.dataSource = self
+        chartCollectionView.delegate = self
+        
         updateTable()
     }
     
@@ -56,6 +68,31 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
         cell.isMomentarySelection = false
         // TODO: disable arrow on side of cell
         return cell
+    }
+    
+    // MARK: - Collection view data source
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return ChartCardData.items.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
+            let cardCell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: FUIChartCardCollectionViewCell.reuseIdentifier,
+                for: indexPath) as! FUIChartCardCollectionViewCell
+            
+            let cardData = ChartCardData.items[indexPath.item]
+            cardCell.title.text = cardData.title
+            cardCell.subtitle.text = cardData.subtitle
+            cardCell.status.text = cardData.statusText
+            cardCell.seriesTitles = cardData.seriesTitle
+            cardCell.kpiItems = cardData.kpiItems
+            cardCell.chartView.chartType = .line
+            cardCell.chartView.categoryAxis.labelLayoutStyle = .allOrNothing // default is .range
+            cardCell.chartView.dataSource = self
+            
+            return cardCell
     }
     
     // MARK: - Data accessing
@@ -152,5 +189,69 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
 extension MON_DataHistoryViewController: EntitySetUpdaterDelegate {
     func entitySetHasChanged() {
         self.updateTable()
+    }
+}
+
+extension MON_DataHistoryViewController: FUIChartViewDataSource {
+    
+    // Required. Asks your data source object for the number of series in the chart.
+    func numberOfSeries(in: FUIChartView) -> Int {
+        return cardData.seriesData.count
+    }
+    
+    // Required. Asks your data source object for the number of values for the given series.
+    func chartView(_ chartView: FUIChartView, numberOfValuesInSeries seriesIndex: Int) -> Int {
+        return cardData.seriesData.count
+    }
+    
+    // Required. Asks your data source object for a value for a given series, value index and axis.
+    func chartView(_ chartView: FUIChartView, valueForSeries series: Int, category categoryIndex: Int,
+                   dimension dimensionIndex: Int) -> Double? {
+        return cardData.seriesData[categoryIndex]
+    }
+    
+    // Optional. Asks your data source object for a formatted label for a given dimension value.
+    func chartView(_ chartView: FUIChartView, formattedStringForValue value: Double, axis: FUIChartAxisId)
+        -> String? {
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .none
+            numberFormatter.maximumFractionDigits = 0
+            return numberFormatter.string(from: value as NSNumber)
+    }
+    
+    // Optional. Asks your data source object for a category axis label at the given index.
+    func chartView(_ chartView: FUIChartView, titleForCategory categoryIndex: Int, inSeries seriesIndex: Int)
+        -> String? {
+            let shortMonths = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
+            return shortMonths[categoryIndex]
+    }
+}
+
+struct ChartCardData {
+    var title: String?
+    var subtitle: String?
+    var trendImage: UIImage?
+    var trendTitle: String?
+    var statusText: String?
+    var kpiItems: [FUIKPIViewItem]
+    var seriesTitle: [FUIText]
+    var chartType: FUIChartType!
+    var seriesData: [Double]
+    
+    static var items: [ChartCardData] {
+        
+        let up = FUIIconLibrary.analytics.trendUp.withRenderingMode(.alwaysTemplate)
+        let kpiCurrency = FUIKPIUnitItem(string: "$")
+        let kpiMetric = FUIKPIMetricItem(string: "171.1")
+        let kpiUnit = FUIKPIUnitItem(string: "M")
+        let multiRevenue: [Double] =  [90, 100, 88, 110, 105, 143, 131, 173, 139, 152, 141, 150]
+        
+        return [
+            ChartCardData(title: "Revenue by Month", subtitle: "in M USD", trendImage: up,
+                          trendTitle: "17.9%", statusText: "Exceeded",
+                          kpiItems: [kpiCurrency, kpiMetric, kpiUnit],
+                          seriesTitle: ["Hardware"], chartType: .line, seriesData: multiRevenue),
+            
+        ]
     }
 }
