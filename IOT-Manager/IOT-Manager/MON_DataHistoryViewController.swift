@@ -21,11 +21,11 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
         return self.appDelegate.iotservice
     }
     
-    private var data: [String] = [String]()
+    private var data: [[Double]] = [[Double]]()
     private var timestamps: [String] = [String]()
     var entityType: IOTEntity?
     
-    var cardData = ChartCardData.items[0]
+    var cardData: ChartCardData!
     
     private let logger = Logger.shared(named: "MON_DataHistoryViewControllerLogger")
     private let okTitle = NSLocalizedString("keyOkButtonTitle",
@@ -56,7 +56,12 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - Table view data source
     
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return self.data.count
+        if self.data.count == 0 {
+            return 0
+        }
+        else {
+            return self.data[0].count
+        }
     }
     
     func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
@@ -64,7 +69,30 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = CellCreationHelper.objectCellWithNonEditableContent(tableView: tableView, indexPath: indexPath, key: self.timestamps[indexPath.row], value: self.data[indexPath.row])
+        
+        var cellOutput: String = ""
+        switch self.entityType! {
+        case IOTEntity.cSensorAcc:
+            cellOutput = "X: \(String(self.data[0][indexPath.row])) Y: \(String(self.data[1][indexPath.row])) Z: \(String(self.data[2][indexPath.row]))"
+        case IOTEntity.cSensorBarometric:
+            cellOutput = "\(String(self.data[0][indexPath.row])) hPa"
+        case IOTEntity.cSensorGyro:
+            cellOutput = "X: \(String(self.data[0][indexPath.row])) Y: \(String(self.data[1][indexPath.row])) Z: \(String(self.data[2][indexPath.row]))"
+        case IOTEntity.cSensorHumidity:
+            cellOutput = "\(String(self.data[0][indexPath.row])) %"
+        case IOTEntity.cSensorMag:
+            cellOutput = "X: \(String(self.data[0][indexPath.row])) Y: \(String(self.data[1][indexPath.row])) Z: \(String(self.data[2][indexPath.row]))"
+        case IOTEntity.cSensorObjectTemp:
+            cellOutput = "\(String(self.data[0][indexPath.row])) C"
+        case IOTEntity.cSensorOptical:
+            cellOutput = "\(String(self.data[0][indexPath.row])) LUX"
+        case IOTEntity.cSensorAmbientTemp:
+            cellOutput = "\(String(self.data[0][indexPath.row])) C"
+        default:
+            break
+        }
+        
+        let cell = CellCreationHelper.objectCellWithNonEditableContent(tableView: tableView, indexPath: indexPath, key: self.timestamps[indexPath.row], value: cellOutput)
         cell.isMomentarySelection = false
         // TODO: disable arrow on side of cell
         return cell
@@ -73,7 +101,7 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - Collection view data source
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ChartCardData.items.count
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
@@ -81,8 +109,14 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
             let cardCell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: FUIChartCardCollectionViewCell.reuseIdentifier,
                 for: indexPath) as! FUIChartCardCollectionViewCell
+
+            if cardData == nil {
+                OperationQueue.main.addOperation {
+                    self.chartCollectionView.reloadData()
+                }
+                return cardCell
+            }
             
-            let cardData = ChartCardData.items[indexPath.item]
             cardCell.title.text = cardData.title
             cardCell.subtitle.text = cardData.subtitle
             cardCell.status.text = cardData.statusText
@@ -106,36 +140,86 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
                 return
             }
             
+            // Create a chart card with default values, and edit them depending on the sensor selected
+            var tempCard = ChartCardData(title: "Data History",
+                                         subtitle: "",
+                                         trendImage: FUIIconLibrary.analytics.trendUp.withRenderingMode(.alwaysTemplate),
+                                         trendTitle: "Trend Title",
+                                         statusText: "",
+                                         kpiItems: [FUIKPIUnitItem(string: ""), FUIKPIMetricItem(string: ""), FUIKPIUnitItem(string: "")],
+                                         seriesTitle: [""],
+                                         chartType: FUIChartType.line,
+                                         seriesData: [[0]])
+            
+            // if sensor only has 1 value, only use xData
+            var xData = [Double]()
+            var yData = [Double]()
+            var zData = [Double]()
+            
             for entity in tIot5272a0aa64cec578f2f9 {
                 switch self.entityType! {
                 case IOTEntity.cSensorAcc:
-                    self.data.append("X: \(String(entity.cSensoraccx!)) Y: \(String(entity.cSensoraccy!)) Z: \(String(entity.cSensoraccz!))")
+                    xData.append(entity.cSensoraccx!)
+                    yData.append(entity.cSensoraccy!)
+                    zData.append(entity.cSensoraccz!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
+                    tempCard.subtitle = "Accelerometer History"
+                    tempCard.seriesTitle = ["X", "Y", "Z"]
                 case IOTEntity.cSensorBarometric:
-                    self.data.append("\(String(entity.cSensorbarometric!)) hPa")
+                    xData.append(entity.cSensorbarometric!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
+                    tempCard.subtitle = "Barometric History"
+                    tempCard.seriesTitle = ["Barometer (hPa)"]
                 case IOTEntity.cSensorGyro:
-                    self.data.append("X: \(String(entity.cSensorgyrox!)) Y: \(String(entity.cSensorgyroy!)) Z: \(String(entity.cSensorgyroz!))")
+                    xData.append(entity.cSensorgyrox!)
+                    yData.append(entity.cSensorgyroy!)
+                    zData.append(entity.cSensorgyroz!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
+                    tempCard.subtitle = "Gyroscope History"
+                    tempCard.seriesTitle = ["X", "Y", "Z"]
                 case IOTEntity.cSensorHumidity:
-                    self.data.append("\(String(entity.cSensorhumidity!)) %")
+                    xData.append(entity.cSensorhumidity!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
+                    tempCard.subtitle = "Humidity History"
+                    tempCard.seriesTitle = ["Humidity (%)"]
                 case IOTEntity.cSensorMag:
-                    self.data.append("X: \(String(entity.cSensormagx!)) Y: \(String(entity.cSensormagy!)) Z: \(String(entity.cSensormagz!))")
+                    xData.append(entity.cSensormagx!)
+                    yData.append(entity.cSensormagy!)
+                    zData.append(entity.cSensormagz!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
+                    tempCard.subtitle = "Magnometer History"
+                    tempCard.seriesTitle = ["X", "Y", "Z"]
                 case IOTEntity.cSensorObjectTemp:
-                    self.data.append("\(String(entity.cSensorobjecttemp!)) C")
+                    xData.append(entity.cSensorobjecttemp!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
+                    tempCard.subtitle = "Object Temperature History"
+                    tempCard.seriesTitle = ["Temp (C)"]
                 case IOTEntity.cSensorOptical:
-                    self.data.append("\(String(entity.cSensoroptical!)) LUX")
+                    xData.append(entity.cSensoroptical!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
+                    tempCard.subtitle = "Optical History"
+                    tempCard.seriesTitle = ["Optical (LUX)"]
                 case IOTEntity.cSensorAmbientTemp:
-                    self.data.append("\(String(entity.cSensortemp!)) C")
+                    xData.append(entity.cSensortemp!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
+                    tempCard.subtitle = "Ambient Temperature History"
+                    tempCard.seriesTitle = ["Temperature (C)"]
                 default:
                     break
                 }
             }
+            
+            // finally, put all the data together
+            switch self.entityType! {
+            case IOTEntity.cSensorAcc, IOTEntity.cSensorGyro, IOTEntity.cSensorMag:
+                self.data = [xData, yData, zData]
+            default:
+                self.data = [xData]
+            }
+            
+            tempCard.seriesData = self.data
+            self.cardData = tempCard
+            
             completionHandler(nil)
         }
     }
@@ -201,13 +285,13 @@ extension MON_DataHistoryViewController: FUIChartViewDataSource {
     
     // Required. Asks your data source object for the number of values for the given series.
     func chartView(_ chartView: FUIChartView, numberOfValuesInSeries seriesIndex: Int) -> Int {
-        return cardData.seriesData.count
+        return cardData.seriesData[0].count
     }
     
     // Required. Asks your data source object for a value for a given series, value index and axis.
     func chartView(_ chartView: FUIChartView, valueForSeries series: Int, category categoryIndex: Int,
                    dimension dimensionIndex: Int) -> Double? {
-        return cardData.seriesData[categoryIndex]
+        return cardData.seriesData[series][categoryIndex]
     }
     
     // Optional. Asks your data source object for a formatted label for a given dimension value.
@@ -222,8 +306,7 @@ extension MON_DataHistoryViewController: FUIChartViewDataSource {
     // Optional. Asks your data source object for a category axis label at the given index.
     func chartView(_ chartView: FUIChartView, titleForCategory categoryIndex: Int, inSeries seriesIndex: Int)
         -> String? {
-            let shortMonths = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
-            return shortMonths[categoryIndex]
+            return self.timestamps[categoryIndex]
     }
 }
 
@@ -236,22 +319,5 @@ struct ChartCardData {
     var kpiItems: [FUIKPIViewItem]
     var seriesTitle: [FUIText]
     var chartType: FUIChartType!
-    var seriesData: [Double]
-    
-    static var items: [ChartCardData] {
-        
-        let up = FUIIconLibrary.analytics.trendUp.withRenderingMode(.alwaysTemplate)
-        let kpiCurrency = FUIKPIUnitItem(string: "$")
-        let kpiMetric = FUIKPIMetricItem(string: "171.1")
-        let kpiUnit = FUIKPIUnitItem(string: "M")
-        let multiRevenue: [Double] =  [90, 100, 88, 110, 105, 143, 131, 173, 139, 152, 141, 150]
-        
-        return [
-            ChartCardData(title: "Revenue by Month", subtitle: "in M USD", trendImage: up,
-                          trendTitle: "17.9%", statusText: "Exceeded",
-                          kpiItems: [kpiCurrency, kpiMetric, kpiUnit],
-                          seriesTitle: ["Hardware"], chartType: .line, seriesData: multiRevenue),
-            
-        ]
-    }
+    var seriesData: [[Double]]
 }
