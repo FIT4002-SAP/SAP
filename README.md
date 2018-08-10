@@ -1,4 +1,8 @@
 # SAP IoT Demo
+
+## Video Updates
+Update 1, 10/8/18 - https://photos.app.goo.gl/4Z2RL8gSCXKQP8pX6
+
 ## Running the app
 ### Steps to run app on XCODE v9.4.1
 1. Clone this repository
