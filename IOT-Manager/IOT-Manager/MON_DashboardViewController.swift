@@ -31,28 +31,28 @@ class MON_DashboardViewController: FUIFormTableViewController {
             let vc = segue.destination as! MON_DataHistoryViewController
             switch selectedIndex?.row {
             case 1:
-                vc.entityType = IOTEntity.cSensorAcc
+                vc.entityType = .cSensorAcc
                 vc.navigationItem.title = "Accelerometer History"
             case 2:
-                vc.entityType = IOTEntity.cSensorBarometric
+                vc.entityType = .cSensorBarometric
                 vc.navigationItem.title = "Barometric History"
             case 3:
-                vc.entityType = IOTEntity.cSensorGyro
+                vc.entityType = .cSensorGyro
                 vc.navigationItem.title = "Gyroscope History"
             case 4:
-                vc.entityType = IOTEntity.cSensorHumidity
+                vc.entityType = .cSensorHumidity
                 vc.navigationItem.title = "Humidity History"
             case 5:
-                vc.entityType = IOTEntity.cSensorMag
+                vc.entityType = .cSensorMag
                 vc.navigationItem.title = "Magnometer History"
             case 6:
-                vc.entityType = IOTEntity.cSensorObjectTemp
+                vc.entityType = .cSensorObjectTemp
                 vc.navigationItem.title = "Object Temperature History"
             case 7:
-                vc.entityType = IOTEntity.cSensorOptical
+                vc.entityType = .cSensorOptical
                 vc.navigationItem.title = "Optical History"
             case 8:
-                vc.entityType = IOTEntity.cSensorAmbientTemp
+                vc.entityType = .cSensorAmbientTemp
                 vc.navigationItem.title = "Ambient Temperature History"
             default:
                 break

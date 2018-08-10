@@ -11,7 +11,19 @@ import SAPFiori
 import SAPOData
 import SAPCommon
 
-class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SAPFioriLoadingIndicator {
+class MON_DataHistoryViewController: UIViewController {
+    
+    struct ChartCardData {
+        var title: String?
+        var subtitle: String?
+        var trendImage: UIImage?
+        var trendTitle: String?
+        var statusText: String?
+        var kpiItems: [FUIKPIViewItem]
+        var seriesTitle: [FUIText]
+        var chartType: FUIChartType!
+        var seriesData: [[Double]]
+    }
     
     @IBOutlet weak var historyTableView: UITableView!
     @IBOutlet weak var chartCollectionView: UICollectionView!
@@ -53,82 +65,6 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
         updateTable()
     }
     
-    // MARK: - Table view data source
-    
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        if self.data.count == 0 {
-            return 0
-        }
-        else {
-            return self.data[0].count
-        }
-    }
-    
-    func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
-        return false
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        var cellOutput: String = ""
-        switch self.entityType! {
-        case IOTEntity.cSensorAcc:
-            cellOutput = "X: \(String(self.data[0][indexPath.row])) Y: \(String(self.data[1][indexPath.row])) Z: \(String(self.data[2][indexPath.row]))"
-        case IOTEntity.cSensorBarometric:
-            cellOutput = "\(String(self.data[0][indexPath.row])) hPa"
-        case IOTEntity.cSensorGyro:
-            cellOutput = "X: \(String(self.data[0][indexPath.row])) Y: \(String(self.data[1][indexPath.row])) Z: \(String(self.data[2][indexPath.row]))"
-        case IOTEntity.cSensorHumidity:
-            cellOutput = "\(String(self.data[0][indexPath.row])) %"
-        case IOTEntity.cSensorMag:
-            cellOutput = "X: \(String(self.data[0][indexPath.row])) Y: \(String(self.data[1][indexPath.row])) Z: \(String(self.data[2][indexPath.row]))"
-        case IOTEntity.cSensorObjectTemp:
-            cellOutput = "\(String(self.data[0][indexPath.row])) C"
-        case IOTEntity.cSensorOptical:
-            cellOutput = "\(String(self.data[0][indexPath.row])) LUX"
-        case IOTEntity.cSensorAmbientTemp:
-            cellOutput = "\(String(self.data[0][indexPath.row])) C"
-        default:
-            break
-        }
-        
-        let cell = CellCreationHelper.objectCellWithNonEditableContent(tableView: tableView, indexPath: indexPath, key: self.timestamps[indexPath.row], value: cellOutput)
-        cell.isMomentarySelection = false
-        // TODO: disable arrow on side of cell
-        return cell
-    }
-    
-    // MARK: - Collection view data source
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
-        -> UICollectionViewCell {
-            let cardCell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: FUIChartCardCollectionViewCell.reuseIdentifier,
-                for: indexPath) as! FUIChartCardCollectionViewCell
-
-            if cardData == nil {
-                OperationQueue.main.addOperation {
-                    self.chartCollectionView.reloadData()
-                }
-                return cardCell
-            }
-            
-            cardCell.title.text = cardData.title
-            cardCell.subtitle.text = cardData.subtitle
-            cardCell.status.text = cardData.statusText
-            cardCell.seriesTitles = cardData.seriesTitle
-            cardCell.kpiItems = cardData.kpiItems
-            cardCell.chartView.chartType = .line
-            cardCell.chartView.categoryAxis.labelLayoutStyle = .allOrNothing // default is .range
-            cardCell.chartView.dataSource = self
-            
-            return cardCell
-    }
-    
     // MARK: - Data accessing
     
     func requestEntities(completionHandler: @escaping (Error?) -> Void) {
@@ -158,48 +94,48 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
             
             for entity in tIot5272a0aa64cec578f2f9 {
                 switch self.entityType! {
-                case IOTEntity.cSensorAcc:
+                case .cSensorAcc:
                     xData.append(entity.cSensoraccx!)
                     yData.append(entity.cSensoraccy!)
                     zData.append(entity.cSensoraccz!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
                     tempCard.subtitle = "Accelerometer History"
                     tempCard.seriesTitle = ["X", "Y", "Z"]
-                case IOTEntity.cSensorBarometric:
+                case .cSensorBarometric:
                     xData.append(entity.cSensorbarometric!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
                     tempCard.subtitle = "Barometric History"
                     tempCard.seriesTitle = ["Barometer (hPa)"]
-                case IOTEntity.cSensorGyro:
+                case .cSensorGyro:
                     xData.append(entity.cSensorgyrox!)
                     yData.append(entity.cSensorgyroy!)
                     zData.append(entity.cSensorgyroz!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
                     tempCard.subtitle = "Gyroscope History"
                     tempCard.seriesTitle = ["X", "Y", "Z"]
-                case IOTEntity.cSensorHumidity:
+                case .cSensorHumidity:
                     xData.append(entity.cSensorhumidity!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
                     tempCard.subtitle = "Humidity History"
                     tempCard.seriesTitle = ["Humidity (%)"]
-                case IOTEntity.cSensorMag:
+                case .cSensorMag:
                     xData.append(entity.cSensormagx!)
                     yData.append(entity.cSensormagy!)
                     zData.append(entity.cSensormagz!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
                     tempCard.subtitle = "Magnometer History"
                     tempCard.seriesTitle = ["X", "Y", "Z"]
-                case IOTEntity.cSensorObjectTemp:
+                case .cSensorObjectTemp:
                     xData.append(entity.cSensorobjecttemp!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
                     tempCard.subtitle = "Object Temperature History"
                     tempCard.seriesTitle = ["Temp (C)"]
-                case IOTEntity.cSensorOptical:
+                case .cSensorOptical:
                     xData.append(entity.cSensoroptical!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
                     tempCard.subtitle = "Optical History"
                     tempCard.seriesTitle = ["Optical (LUX)"]
-                case IOTEntity.cSensorAmbientTemp:
+                case .cSensorAmbientTemp:
                     xData.append(entity.cSensortemp!)
                     self.timestamps.append((entity.cTimestamp?.toString())!)
                     tempCard.subtitle = "Ambient Temperature History"
@@ -211,7 +147,7 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
             
             // finally, put all the data together
             switch self.entityType! {
-            case IOTEntity.cSensorAcc, IOTEntity.cSensorGyro, IOTEntity.cSensorMag:
+            case .cSensorAcc, .cSensorGyro, .cSensorMag:
                 self.data = [xData, yData, zData]
             default:
                 self.data = [xData]
@@ -222,6 +158,54 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
             
             completionHandler(nil)
         }
+    }
+}
+
+// MARK: - Table view data source
+
+extension MON_DataHistoryViewController: UITableViewDataSource, SAPFioriLoadingIndicator {
+    
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        if self.data.count == 0 {
+            return 0
+        }
+        else {
+            return self.data[0].count
+        }
+    }
+
+    func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
+        return false
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cellOutput: String = ""
+        switch self.entityType! {
+        case IOTEntity.cSensorAcc:
+            cellOutput = "X: \(String(self.data[0][indexPath.row])) Y: \(String(self.data[1][indexPath.row])) Z: \(String(self.data[2][indexPath.row]))"
+        case IOTEntity.cSensorBarometric:
+            cellOutput = "\(String(self.data[0][indexPath.row])) hPa"
+        case IOTEntity.cSensorGyro:
+            cellOutput = "X: \(String(self.data[0][indexPath.row])) Y: \(String(self.data[1][indexPath.row])) Z: \(String(self.data[2][indexPath.row]))"
+        case IOTEntity.cSensorHumidity:
+            cellOutput = "\(String(self.data[0][indexPath.row])) %"
+        case IOTEntity.cSensorMag:
+            cellOutput = "X: \(String(self.data[0][indexPath.row])) Y: \(String(self.data[1][indexPath.row])) Z: \(String(self.data[2][indexPath.row]))"
+        case IOTEntity.cSensorObjectTemp:
+            cellOutput = "\(String(self.data[0][indexPath.row])) C"
+        case IOTEntity.cSensorOptical:
+            cellOutput = "\(String(self.data[0][indexPath.row])) LUX"
+        case IOTEntity.cSensorAmbientTemp:
+            cellOutput = "\(String(self.data[0][indexPath.row])) C"
+        default:
+            break
+        }
+        
+        let cell = CellCreationHelper.objectCellWithNonEditableContent(tableView: tableView, indexPath: indexPath, key: self.timestamps[indexPath.row], value: cellOutput)
+        cell.isMomentarySelection = false
+        // TODO: disable arrow on side of cell
+        return cell
     }
     
     // MARK: - Table update
@@ -270,6 +254,40 @@ class MON_DataHistoryViewController: UIViewController, UITableViewDataSource, UI
     }
 }
 
+// MARK: - Collection view data source
+
+extension MON_DataHistoryViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
+            let cardCell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: FUIChartCardCollectionViewCell.reuseIdentifier,
+                for: indexPath) as! FUIChartCardCollectionViewCell
+            
+            if cardData == nil {
+                OperationQueue.main.addOperation {
+                    self.chartCollectionView.reloadData()
+                }
+                return cardCell
+            }
+            
+            cardCell.title.text = cardData.title
+            cardCell.subtitle.text = cardData.subtitle
+            cardCell.status.text = cardData.statusText
+            cardCell.seriesTitles = cardData.seriesTitle
+            cardCell.kpiItems = cardData.kpiItems
+            cardCell.chartView.chartType = .line
+            cardCell.chartView.categoryAxis.labelLayoutStyle = .allOrNothing // default is .range
+            cardCell.chartView.dataSource = self
+            
+            return cardCell
+    }
+}
+
 extension MON_DataHistoryViewController: EntitySetUpdaterDelegate {
     func entitySetHasChanged() {
         self.updateTable()
@@ -308,16 +326,4 @@ extension MON_DataHistoryViewController: FUIChartViewDataSource {
         -> String? {
             return self.timestamps[categoryIndex]
     }
-}
-
-struct ChartCardData {
-    var title: String?
-    var subtitle: String?
-    var trendImage: UIImage?
-    var trendTitle: String?
-    var statusText: String?
-    var kpiItems: [FUIKPIViewItem]
-    var seriesTitle: [FUIText]
-    var chartType: FUIChartType!
-    var seriesData: [[Double]]
 }
