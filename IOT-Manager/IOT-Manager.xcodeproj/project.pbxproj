@@ -17,6 +17,7 @@
 		12E84FE31F4ECC4A0061C99E /* SAPFioriFlows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12E84FE21F4ECC3E0061C99E /* SAPFioriFlows.framework */; };
 		12E84FE41F4ECC4A0061C99E /* SAPFioriFlows.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12E84FE21F4ECC3E0061C99E /* SAPFioriFlows.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		12E84FE51F4ECF220061C99E /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E84FDE1F4EBD460061C99E /* OnboardingManager.swift */; };
+		1474556B21224FCD00DD873B /* IOT_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474556A21224FCD00DD873B /* IOT_ManagerUITests.swift */; };
 		3B3EEF93CACA984879323D71 /* IotserviceMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86132FF94058A037D0008D21 /* IotserviceMetadata.swift */; };
 		4B985CCFC6F1F78F4468BA23 /* IotserviceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14609373CEDDCCB853E176FB /* IotserviceFactory.swift */; };
 		5A6BEE448B91C576C79FC3CF /* IotserviceStaticResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B8014ED4454700D4A40E41 /* IotserviceStaticResolver.swift */; };
@@ -49,6 +50,16 @@
 		F725AB2F7466E1CFC8599F78 /* TIot5272a0aa64cec578f2f9MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD9CEDBCEF5D86DEA4EEC77 /* TIot5272a0aa64cec578f2f9MasterViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1474556D21224FCD00DD873B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A1315AD1D4B982000A5DA56 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A1315B41D4B982000A5DA56;
+			remoteInfo = "IOT-Manager";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		758AC1C31D5A265200311F39 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -77,6 +88,9 @@
 		12E84FDE1F4EBD460061C99E /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
 		12E84FE21F4ECC3E0061C99E /* SAPFioriFlows.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SAPFioriFlows.framework; sourceTree = "<group>"; };
 		14609373CEDDCCB853E176FB /* IotserviceFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IotserviceFactory.swift; path = "Proxy Classes/com.sap.iot.manager/internal/IotserviceFactory.swift"; sourceTree = "<group>"; };
+		1474556821224FCD00DD873B /* IOT-ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IOT-ManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1474556A21224FCD00DD873B /* IOT_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOT_ManagerUITests.swift; sourceTree = "<group>"; };
+		1474556C21224FCD00DD873B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34B8014ED4454700D4A40E41 /* IotserviceStaticResolver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IotserviceStaticResolver.swift; path = "Proxy Classes/com.sap.iot.manager/internal/IotserviceStaticResolver.swift"; sourceTree = "<group>"; };
 		3D9F01AA4A2EF9629BD3FFD3 /* IotserviceMetadataParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IotserviceMetadataParser.swift; path = "Proxy Classes/com.sap.iot.manager/internal/IotserviceMetadataParser.swift"; sourceTree = "<group>"; };
 		46DB742BFB618B23A56B4CFA /* IotserviceMetadataChanges.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IotserviceMetadataChanges.swift; path = "Proxy Classes/com.sap.iot.manager/internal/IotserviceMetadataChanges.swift"; sourceTree = "<group>"; };
@@ -107,6 +121,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1474556521224FCD00DD873B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A1315B21D4B982000A5DA56 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,6 +150,15 @@
 				12E84FDE1F4EBD460061C99E /* OnboardingManager.swift */,
 			);
 			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		1474556921224FCD00DD873B /* IOT-ManagerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1474556A21224FCD00DD873B /* IOT_ManagerUITests.swift */,
+				1474556C21224FCD00DD873B /* Info.plist */,
+			);
+			path = "IOT-ManagerUITests";
 			sourceTree = "<group>";
 		};
 		1E730C88258605D68C378C9C /* public */ = {
@@ -198,6 +228,7 @@
 			children = (
 				7A16F06C1FD1B3C700D2FABD /* README.md */,
 				7A1315B71D4B982000A5DA56 /* IOT-Manager */,
+				1474556921224FCD00DD873B /* IOT-ManagerUITests */,
 				7A1315B61D4B982000A5DA56 /* Products */,
 				7A1315CC1D4B990B00A5DA56 /* Frameworks */,
 			);
@@ -207,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				7A1315B51D4B982000A5DA56 /* IOT-Manager.app */,
+				1474556821224FCD00DD873B /* IOT-ManagerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -255,6 +287,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1474556721224FCD00DD873B /* IOT-ManagerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1474556F21224FCD00DD873B /* Build configuration list for PBXNativeTarget "IOT-ManagerUITests" */;
+			buildPhases = (
+				1474556421224FCD00DD873B /* Sources */,
+				1474556521224FCD00DD873B /* Frameworks */,
+				1474556621224FCD00DD873B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1474556E21224FCD00DD873B /* PBXTargetDependency */,
+			);
+			name = "IOT-ManagerUITests";
+			productName = "IOT-ManagerUITests";
+			productReference = 1474556821224FCD00DD873B /* IOT-ManagerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		7A1315B41D4B982000A5DA56 /* IOT-Manager */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A1315C91D4B982000A5DA56 /* Build configuration list for PBXNativeTarget "IOT-Manager" */;
@@ -279,10 +329,15 @@
 		7A1315AD1D4B982000A5DA56 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = SAP;
 				TargetAttributes = {
+					1474556721224FCD00DD873B = {
+						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7A1315B41D4B982000A5DA56;
+					};
 					7A1315B41D4B982000A5DA56 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 7TSP9DBMZ4;
@@ -305,11 +360,19 @@
 			projectRoot = "";
 			targets = (
 				7A1315B41D4B982000A5DA56 /* IOT-Manager */,
+				1474556721224FCD00DD873B /* IOT-ManagerUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1474556621224FCD00DD873B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A1315B31D4B982000A5DA56 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -328,6 +391,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1474556421224FCD00DD873B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1474556B21224FCD00DD873B /* IOT_ManagerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A1315B11D4B982000A5DA56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,6 +427,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1474556E21224FCD00DD873B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A1315B41D4B982000A5DA56 /* IOT-Manager */;
+			targetProxy = 1474556D21224FCD00DD873B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		10C18C497FA76503C8E9A0D5 /* TIot5272a0aa64cec578f2f9.storyboard */ = {
@@ -386,6 +465,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1474557021224FCD00DD873B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "IOT-ManagerUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roshan.example.IOT-ManagerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "IOT-Manager";
+			};
+			name = Debug;
+		};
+		1474557121224FCD00DD873B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "IOT-ManagerUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roshan.example.IOT-ManagerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "IOT-Manager";
+			};
+			name = Release;
+		};
 		7A1315C71D4B982000A5DA56 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -544,6 +669,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1474556F21224FCD00DD873B /* Build configuration list for PBXNativeTarget "IOT-ManagerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1474557021224FCD00DD873B /* Debug */,
+				1474557121224FCD00DD873B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7A1315B01D4B982000A5DA56 /* Build configuration list for PBXProject "IOT-Manager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
