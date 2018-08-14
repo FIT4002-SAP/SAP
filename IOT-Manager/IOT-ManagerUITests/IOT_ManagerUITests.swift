@@ -28,26 +28,27 @@ class IOT_ManagerUITests: XCTestCase {
         super.tearDown()
     }
     
-//    func readLoginDetails() -> String {
-//        let file: FileHandle? = FileHandle(forReadingAtPath: "login.txt")
-//        var str = ""
+//    func readLoginDetails() -> (String,String) {
+//        var logon: [String] = []
+//        if let url = Bundle.main.url(forResource:"logon", withExtension: "txt") {
+//            do {
+//                let data = try Data(contentsOf:url)
+//                let attibutedString = try NSAttributedString(data: data, documentAttributes: nil)
+//                let fullText = attibutedString.string
+//                let readings = fullText.components(separatedBy: CharacterSet.newlines)
+//                for line in readings {
+//                    logon.append(line)
+//                }
+//                print(readings)
 //
-//        if file != nil {
-//            // Read all the data
-//            let data = file?.readDataToEndOfFile()
-//
-//            // Close the file
-//            file?.closeFile()
-//
-//            // Convert our data to string
-//            str = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-//            return str as String
+//            } catch {
+//                print(error)
+//            }
 //        }
-//
-//        return str
+//        return (logon[0],logon[1])
 //    }
     
-    func logonTest(application: XCUIApplication) {
+    func logonTest(application: XCUIApplication, email: String, pass: String) {
         
         let webViewsQuery = XCUIApplication().webViews
         let usernameField = webViewsQuery/*@START_MENU_TOKEN@*/.textFields["E-mail, ID, or User Name"]/*[[".otherElements[\"SAP Cloud Platform: Log On\"]",".otherElements[\"main\"]",".otherElements[\"Log On, web dialog\"].textFields[\"E-mail, ID, or User Name\"]",".textFields[\"E-mail, ID, or User Name\"]"],[[[-1,3],[-1,2],[-1,1,2],[-1,0,1]],[[-1,3],[-1,2],[-1,1,2]],[[-1,3],[-1,2]]],[0]]@END_MENU_TOKEN@*/
@@ -55,13 +56,12 @@ class IOT_ManagerUITests: XCTestCase {
         expectation(for: NSPredicate(format: "hittable == true"), evaluatedWith: usernameField, handler: nil)
         waitForExpectations(timeout: 60.0, handler: nil)
         
-        // todo: write a file to read off login details
         usernameField.tap()
-        usernameField.typeText("fit4002.intelligence@gmail.com")
+        usernameField.typeText(email)
         
         passwordField.tap()
-        passwordField.typeText("2018FIT4002?")
-        
+        passwordField.typeText(pass)
+
         webViewsQuery/*@START_MENU_TOKEN@*/.buttons["Log On"]/*[[".otherElements[\"SAP Cloud Platform: Log On\"]",".otherElements[\"main\"]",".otherElements[\"Log On, web dialog\"].buttons[\"Log On\"]",".buttons[\"Log On\"]"],[[[-1,3],[-1,2],[-1,1,2],[-1,0,1]],[[-1,3],[-1,2],[-1,1,2]],[[-1,3],[-1,2]]],[0]]@END_MENU_TOKEN@*/.tap()
         
     }
@@ -73,7 +73,10 @@ class IOT_ManagerUITests: XCTestCase {
         //todo :perform catch upon failed logon due to databse being switched off
         
         let app = XCUIApplication()
-        logonTest(application: app)
+        
+        // todo: write a file to read off login details
+        // todo: note if running on simulator 'Hardware -> Keyboard -> Connect hardware keyboard' is off
+        logonTest(application: app, email: "EMAIL-PLACEHOLDER", pass: "PASSWORD-PLACEHOLDER")
 
         
         
