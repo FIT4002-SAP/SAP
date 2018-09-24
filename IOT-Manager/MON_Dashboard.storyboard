@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,44 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="R07-te-PxB">
+            <objects>
+                <tabBarController storyboardIdentifier="DashboardMaster" id="Y3I-2m-kbV" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fVM-jT-ZS7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="EBt-kl-78x" kind="relationship" relationship="viewControllers" id="mdM-Gx-IGr"/>
+                        <segue destination="bga-Xa-4BU" kind="relationship" relationship="viewControllers" id="Fgq-QL-Bed"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K99-Pw-vcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-743" y="-767"/>
+        </scene>
+        <!--Incident Reports-->
+        <scene sceneID="2Ll-co-Ahf">
+            <objects>
+                <viewController id="bga-Xa-4BU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Asj-fa-L38">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="s2f-WB-wz5"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Incident Reports" image="caution.png" selectedImage="caution.png" id="V7D-QR-2hw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wM7-sE-tR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="95" y="-852"/>
+        </scene>
         <!--Dashboard-->
         <scene sceneID="ffT-zW-iED">
             <objects>
-                <tableViewController storyboardIdentifier="DashboardMaster" id="EBt-kl-78x" customClass="MON_DashboardViewController" customModule="IOT_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="EBt-kl-78x" customClass="MON_DashboardViewController" customModule="IOT_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7rr-Ne-OoI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,10 +67,12 @@
                             <outlet property="delegate" destination="EBt-kl-78x" id="JWD-Cd-eeV"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="dashboard.png" selectedImage="dashboard.png" id="naM-ag-Mdd"/>
                     <navigationItem key="navigationItem" title="Dashboard" id="EN7-vh-9xZ"/>
                     <connections>
                         <segue destination="xBe-vR-jtF" kind="show" identifier="allDataCellSelected" id="4gL-3l-q0O"/>
                         <segue destination="hc6-iP-iH4" kind="show" identifier="dataHistoryCellSelected" id="IXm-Xp-SX8"/>
+                        <segue destination="JCS-0B-jem" kind="show" identifier="viewModelCellSelected" id="G3f-Js-nYo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOJ-AE-n7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -52,7 +88,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9DW-db-Era">
-                                <rect key="frame" x="0.0" y="306" width="375" height="361"/>
+                                <rect key="frame" x="0.0" y="262" width="375" height="405"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CellID" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FUIObjectTableViewCell" id="aHE-AD-oCN" customClass="FUIObjectTableViewCell" customModule="SAPFiori">
@@ -70,7 +106,7 @@
                                 </connections>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wbl-av-Mbm" userLabel="Chart Collection View">
-                                <rect key="frame" x="40" y="96" width="303" height="210"/>
+                                <rect key="frame" x="40" y="52" width="303" height="210"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="210" id="ONZ-5c-TG6"/>
@@ -122,6 +158,14 @@
             </objects>
             <point key="canvasLocation" x="1800" y="447"/>
         </scene>
+        <!--MON_SceneKit-->
+        <scene sceneID="Akp-IL-T3F">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MON_SceneKit" id="JCS-0B-jem" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kty-Vp-vDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1734" y="355"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hk3-RS-Jdy">
             <objects>
@@ -139,4 +183,11 @@
             <point key="canvasLocation" x="-375" y="160"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="caution.png" width="32" height="32"/>
+        <image name="dashboard.png" width="32" height="32"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="mdM-Gx-IGr"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -69,7 +69,7 @@ class MON_DataHistoryViewController: UIViewController {
     
     func requestEntities(completionHandler: @escaping (Error?) -> Void) {
         // Only request the first 20 values. If you want to modify the requested entities, you can do it here.
-        let query = DataQuery().selectAll()
+        let query = DataQuery().selectAll().top(100)
         self.iotservice.fetchTIot5272a0aa64cec578f2f9(matching: query) { tIot5272a0aa64cec578f2f9, error in
             guard let tIot5272a0aa64cec578f2f9 = tIot5272a0aa64cec578f2f9 else {
                 completionHandler(error!)
