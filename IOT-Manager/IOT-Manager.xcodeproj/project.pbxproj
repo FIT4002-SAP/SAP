@@ -47,6 +47,10 @@
 		CD3FC8212157944B00547532 /* MON_SceneKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3FC8202157944B00547532 /* MON_SceneKit.storyboard */; };
 		CD3FC8232157948500547532 /* MON_SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FC8222157948500547532 /* MON_SceneKitViewController.swift */; };
 		CD412BCE211811770072B536 /* MON_DataHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD412BCD211811770072B536 /* MON_DataHistoryViewController.swift */; };
+		CD55F4132161ED8000990889 /* TIOT35970B0909FFB71C3F4FType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55F4122161ED8000990889 /* TIOT35970B0909FFB71C3F4FType.swift */; };
+		CD55F4192161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55F4152161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeDetailViewController.swift */; };
+		CD55F41A2161EDC200990889 /* TIOT35970B0909FFB71C3F4FType.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD55F4162161EDC200990889 /* TIOT35970B0909FFB71C3F4FType.storyboard */; };
+		CD55F41B2161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55F4182161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeMasterViewController.swift */; };
 		CDEBCB892117E79E00263D34 /* MON_Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDEBCB882117E79E00263D34 /* MON_Dashboard.storyboard */; };
 		CDEBCB8B2117E8C800263D34 /* MON_DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBCB8A2117E8C800263D34 /* MON_DashboardViewController.swift */; };
 		CDEBCB8D2117EA1500263D34 /* IOTEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBCB8C2117EA1500263D34 /* IOTEntity.swift */; };
@@ -110,6 +114,10 @@
 		CD3FC8202157944B00547532 /* MON_SceneKit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MON_SceneKit.storyboard; sourceTree = "<group>"; };
 		CD3FC8222157948500547532 /* MON_SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MON_SceneKitViewController.swift; sourceTree = "<group>"; };
 		CD412BCD211811770072B536 /* MON_DataHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MON_DataHistoryViewController.swift; sourceTree = "<group>"; };
+		CD55F4122161ED8000990889 /* TIOT35970B0909FFB71C3F4FType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TIOT35970B0909FFB71C3F4FType.swift; path = "Proxy Classes/com.sap.iot.manager/public/TIOT35970B0909FFB71C3F4FType.swift"; sourceTree = "<group>"; };
+		CD55F4152161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIOT35970B0909FFB71C3F4FTypeDetailViewController.swift; sourceTree = "<group>"; };
+		CD55F4172161EDC200990889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TIOT35970B0909FFB71C3F4FType.storyboard; sourceTree = "<group>"; };
+		CD55F4182161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIOT35970B0909FFB71C3F4FTypeMasterViewController.swift; sourceTree = "<group>"; };
 		CDEBCB882117E79E00263D34 /* MON_Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MON_Dashboard.storyboard; path = ../MON_Dashboard.storyboard; sourceTree = "<group>"; };
 		CDEBCB8A2117E8C800263D34 /* MON_DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MON_DashboardViewController.swift; sourceTree = "<group>"; };
 		CDEBCB8C2117EA1500263D34 /* IOTEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOTEntity.swift; sourceTree = "<group>"; };
@@ -144,6 +152,7 @@
 		1E730C88258605D68C378C9C /* public */ = {
 			isa = PBXGroup;
 			children = (
+				CD55F4122161ED8000990889 /* TIOT35970B0909FFB71C3F4FType.swift */,
 				65E326B75942DD6A7253CC51 /* TIOT5272A0AA64CEC578F2F9Type.swift */,
 				86132FF94058A037D0008D21 /* IotserviceMetadata.swift */,
 				C5E1E08AC639BFA79A57F3FC /* Iotservice.swift */,
@@ -189,6 +198,7 @@
 				CD412BCD211811770072B536 /* MON_DataHistoryViewController.swift */,
 				75AC42CE1DAF824D00B445FF /* CollectionsViewController.swift */,
 				128B53051F8E667000E64DF6 /* SnapshotViewController.swift */,
+				CD55F4142161EDC200990889 /* TIOT35970B0909FFB71C3F4FType */,
 				C1C0A5B3162A92D28C70B466 /* TIot5272a0aa64cec578f2f9 */,
 			);
 			name = ViewControllers;
@@ -275,6 +285,16 @@
 			name = SceneKit;
 			sourceTree = "<group>";
 		};
+		CD55F4142161EDC200990889 /* TIOT35970B0909FFB71C3F4FType */ = {
+			isa = PBXGroup;
+			children = (
+				CD55F4162161EDC200990889 /* TIOT35970B0909FFB71C3F4FType.storyboard */,
+				CD55F4152161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeDetailViewController.swift */,
+				CD55F4182161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeMasterViewController.swift */,
+			);
+			path = TIOT35970B0909FFB71C3F4FType;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -340,6 +360,7 @@
 				7A16F06D1FD1B3C700D2FABD /* README.md in Resources */,
 				7A1315C51D4B982000A5DA56 /* LaunchScreen.storyboard in Resources */,
 				12D066CF1F4DDB0E0075EBA4 /* (null) in Resources */,
+				CD55F41A2161EDC200990889 /* TIOT35970B0909FFB71C3F4FType.storyboard in Resources */,
 				CD1A756921594A42009A22E3 /* caution.png in Resources */,
 				CDEBCB892117E79E00263D34 /* MON_Dashboard.storyboard in Resources */,
 				CD3FC8212157944B00547532 /* MON_SceneKit.storyboard in Resources */,
@@ -360,17 +381,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				128B53061F8E667000E64DF6 /* SnapshotViewController.swift in Sources */,
+				CD55F4132161ED8000990889 /* TIOT35970B0909FFB71C3F4FType.swift in Sources */,
 				12E84FE51F4ECF220061C99E /* OnboardingManager.swift in Sources */,
 				7A9F6FF61F3883D3000A1815 /* SAPFioriLoadingIndicator.swift in Sources */,
 				7A26CA1C1F31BA8800B156B6 /* CellCreationHelper.swift in Sources */,
 				12E07EF21E96851800460A94 /* CollectionType.swift in Sources */,
 				75AC42D41DAF824D00B445FF /* CollectionsViewController.swift in Sources */,
 				7A1315B91D4B982000A5DA56 /* AppDelegate.swift in Sources */,
+				CD55F4192161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeDetailViewController.swift in Sources */,
 				4B985CCFC6F1F78F4468BA23 /* IotserviceFactory.swift in Sources */,
 				CDEBCB8B2117E8C800263D34 /* MON_DashboardViewController.swift in Sources */,
 				9EEEB9E213DCF7BD21C004B7 /* IotserviceMetadataParser.swift in Sources */,
 				CD412BCE211811770072B536 /* MON_DataHistoryViewController.swift in Sources */,
 				AD2D6D047E1B83C858917D06 /* IotserviceMetadataText.swift in Sources */,
+				CD55F41B2161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeMasterViewController.swift in Sources */,
 				5A6BEE448B91C576C79FC3CF /* IotserviceStaticResolver.swift in Sources */,
 				CD3FC8232157948500547532 /* MON_SceneKitViewController.swift in Sources */,
 				F3FC3B250B205D5C5AB1D1D8 /* IotserviceMetadataChanges.swift in Sources */,
@@ -409,6 +433,14 @@
 				CB909D801E38CA8800218154 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CD55F4162161EDC200990889 /* TIOT35970B0909FFB71C3F4FType.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD55F4172161EDC200990889 /* Base */,
+			);
+			name = TIOT35970B0909FFB71C3F4FType.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

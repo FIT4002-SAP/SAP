@@ -1,4 +1,4 @@
-// # Proxy Compiler 17.12.4-8c3504-20180321
+// # Proxy Compiler 18.3.2-b9f583-20180614
 
 import Foundation
 import SAPOData
