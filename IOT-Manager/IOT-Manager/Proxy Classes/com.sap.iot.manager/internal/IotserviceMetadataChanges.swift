@@ -1,4 +1,4 @@
-// # Proxy Compiler 17.12.4-8c3504-20180321
+// # Proxy Compiler 18.3.2-b9f583-20180614
 
 import Foundation
 import SAPOData
@@ -16,11 +16,35 @@ internal class IotserviceMetadataChanges: ObjectBase {
 
     private class func merge1(metadata: CSDLDocument) {
         Ignore.valueOf_any(metadata)
+        if !IotserviceMetadata.EntityTypes.tIOT35970B0909FFB71C3F4FType.isRemoved {
+            IotserviceMetadata.EntityTypes.tIOT35970B0909FFB71C3F4FType = metadata.entityType(withName: "iotmmsxs.iotservice.T_IOT_35970B0909FFB71C3F4FType")
+        }
         if !IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.isRemoved {
             IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type = metadata.entityType(withName: "iotmmsxs.iotservice.T_IOT_5272A0AA64CEC578F2F9Type")
         }
+        if !IotserviceMetadata.EntitySets.tIot35970b0909ffb71c3f4f.isRemoved {
+            IotserviceMetadata.EntitySets.tIot35970b0909ffb71c3f4f = metadata.entitySet(withName: "T_IOT_35970B0909FFB71C3F4F")
+        }
         if !IotserviceMetadata.EntitySets.tIot5272a0aa64cec578f2f9.isRemoved {
             IotserviceMetadata.EntitySets.tIot5272a0aa64cec578f2f9 = metadata.entitySet(withName: "T_IOT_5272A0AA64CEC578F2F9")
+        }
+        if !TIOT35970B0909FFB71C3F4FType.genId.isRemoved {
+            TIOT35970B0909FFB71C3F4FType.genId = IotserviceMetadata.EntityTypes.tIOT35970B0909FFB71C3F4FType.property(withName: "GEN_ID")
+        }
+        if !TIOT35970B0909FFB71C3F4FType.gDevice.isRemoved {
+            TIOT35970B0909FFB71C3F4FType.gDevice = IotserviceMetadata.EntityTypes.tIOT35970B0909FFB71C3F4FType.property(withName: "G_DEVICE")
+        }
+        if !TIOT35970B0909FFB71C3F4FType.gCreated.isRemoved {
+            TIOT35970B0909FFB71C3F4FType.gCreated = IotserviceMetadata.EntityTypes.tIOT35970B0909FFB71C3F4FType.property(withName: "G_CREATED")
+        }
+        if !TIOT35970B0909FFB71C3F4FType.cTimestamp.isRemoved {
+            TIOT35970B0909FFB71C3F4FType.cTimestamp = IotserviceMetadata.EntityTypes.tIOT35970B0909FFB71C3F4FType.property(withName: "C_TIMESTAMP")
+        }
+        if !TIOT35970B0909FFB71C3F4FType.cDescription.isRemoved {
+            TIOT35970B0909FFB71C3F4FType.cDescription = IotserviceMetadata.EntityTypes.tIOT35970B0909FFB71C3F4FType.property(withName: "C_DESCRIPTION")
+        }
+        if !TIOT35970B0909FFB71C3F4FType.cIncidentCode.isRemoved {
+            TIOT35970B0909FFB71C3F4FType.cIncidentCode = IotserviceMetadata.EntityTypes.tIOT35970B0909FFB71C3F4FType.property(withName: "C_INCIDENT_CODE")
         }
         if !TIOT5272A0AA64CEC578F2F9Type.genId.isRemoved {
             TIOT5272A0AA64CEC578F2F9Type.genId = IotserviceMetadata.EntityTypes.tIOT5272A0AA64CEC578F2F9Type.property(withName: "GEN_ID")

@@ -18,6 +18,7 @@ enum IOTEntity: String {
     case cSensorObjectTemp  = "Object Temperature"
     case cSensorOptical     = "Optical"
     case cSensorAmbientTemp = "Ambient Temperature"
+    case model              = "View Model of Tower"
     case none               = ""
     
     static let all = [
@@ -29,6 +30,7 @@ enum IOTEntity: String {
         cSensorMag,
         cSensorObjectTemp,
         cSensorOptical,
-        cSensorAmbientTemp
+        cSensorAmbientTemp,
+        model
         ]
 }

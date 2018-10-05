@@ -62,6 +62,10 @@ class MON_DashboardViewController: FUIFormTableViewController {
             let vc = segue.destination as! TIot5272a0aa64cec578f2f9MasterViewController
             vc.navigationItem.title = "TIot5272a0aa64cec578f2f9"
         }
+        else if segue.identifier == "viewModelCellSelected" {
+            let vc = segue.destination as! MON_SceneKitViewController
+            vc.navigationItem.title = "Model"
+        }
     }
     
     // MARK: - UITableViewDelegate
@@ -90,6 +94,8 @@ class MON_DashboardViewController: FUIFormTableViewController {
         switch indexPath.row {
         case 0:
             performSegue(withIdentifier: "allDataCellSelected", sender: self.tableView.cellForRow(at: indexPath))
+        case 9:
+            performSegue(withIdentifier: "viewModelCellSelected", sender: self.tableView.cellForRow(at: indexPath))
         default:
             performSegue(withIdentifier: "dataHistoryCellSelected", sender: self.tableView.cellForRow(at: indexPath))
         }
