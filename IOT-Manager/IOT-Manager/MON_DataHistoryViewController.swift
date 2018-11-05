@@ -11,6 +11,11 @@ import SAPFiori
 import SAPOData
 import SAPCommon
 
+
+/*
+ *  Controls the view shown after selecting a sensor type from the dashboard.
+ *  Contains a table view to see each data entry, and a collection view for a graph.
+ */
 class MON_DataHistoryViewController: UIViewController {
     
     struct ChartCardData {
@@ -25,20 +30,24 @@ class MON_DataHistoryViewController: UIViewController {
         var seriesData: [[Double]]
     }
     
+    // IBOutlets
     @IBOutlet weak var historyTableView: UITableView!
     @IBOutlet weak var chartCollectionView: UICollectionView!
     
+    // connecting to Cloud Platform IOT Service
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var iotservice: Iotservice<OnlineODataProvider> {
         return self.appDelegate.iotservice
     }
     
+    // used to display the graph/Fiori Card
     private var data: [[Double]] = [[Double]]()
     private var timestamps: [String] = [String]()
     var entityType: IOTEntity?
     
     var cardData: ChartCardData!
     
+    // Cloud Platform logging
     private let logger = Logger.shared(named: "MON_DataHistoryViewControllerLogger")
     private let okTitle = NSLocalizedString("keyOkButtonTitle",
                                             value: "OK",
@@ -51,9 +60,11 @@ class MON_DataHistoryViewController: UIViewController {
         super.viewDidLoad()
         self.preferredContentSize = CGSize(width: 320, height: 480)
         
+        // prep table
         self.historyTableView.rowHeight = UITableViewAutomaticDimension
         self.historyTableView.estimatedRowHeight = 44
         
+        // prep collection view
         let flowLayout = FUICollectionViewLayout.horizontalScroll
         flowLayout.itemSize = CGSize(width: 370, height: 192) // Card size according design guideline
         chartCollectionView.collectionViewLayout = flowLayout
@@ -62,14 +73,21 @@ class MON_DataHistoryViewController: UIViewController {
         chartCollectionView.dataSource = self
         chartCollectionView.delegate = self
         
+        // refresh the data
         updateTable()
     }
     
     // MARK: - Data accessing
     
     func requestEntities(completionHandler: @escaping (Error?) -> Void) {
-        // Only request the first 20 values. If you want to modify the requested entities, you can do it here.
+        
+        /////////////////////////////////////////////////////
+        ///////// START DATA QUERY
+        // Only requesting the first 100 values. If you want to modify the requested entities, you can do it here.
         let query = DataQuery().selectAll().top(100)
+        /////////////////////////////////////////////////////
+        ///////// END DATA QUERY
+        
         self.iotservice.fetchTIot5272a0aa64cec578f2f9(matching: query) { tIot5272a0aa64cec578f2f9, error in
             guard let tIot5272a0aa64cec578f2f9 = tIot5272a0aa64cec578f2f9 else {
                 completionHandler(error!)
@@ -182,21 +200,21 @@ extension MON_DataHistoryViewController: UITableViewDataSource, SAPFioriLoadingI
         
         var cellOutput: String = ""
         switch self.entityType! {
-        case IOTEntity.cSensorAcc:
+        case .cSensorAcc:
             cellOutput = "X: \(String(self.data[0][indexPath.row])) Y: \(String(self.data[1][indexPath.row])) Z: \(String(self.data[2][indexPath.row]))"
-        case IOTEntity.cSensorBarometric:
+        case .cSensorBarometric:
             cellOutput = "\(String(self.data[0][indexPath.row])) hPa"
-        case IOTEntity.cSensorGyro:
+        case .cSensorGyro:
             cellOutput = "X: \(String(self.data[0][indexPath.row])) Y: \(String(self.data[1][indexPath.row])) Z: \(String(self.data[2][indexPath.row]))"
-        case IOTEntity.cSensorHumidity:
+        case .cSensorHumidity:
             cellOutput = "\(String(self.data[0][indexPath.row])) %"
-        case IOTEntity.cSensorMag:
+        case .cSensorMag:
             cellOutput = "X: \(String(self.data[0][indexPath.row])) Y: \(String(self.data[1][indexPath.row])) Z: \(String(self.data[2][indexPath.row]))"
-        case IOTEntity.cSensorObjectTemp:
+        case .cSensorObjectTemp:
             cellOutput = "\(String(self.data[0][indexPath.row])) C"
-        case IOTEntity.cSensorOptical:
+        case .cSensorOptical:
             cellOutput = "\(String(self.data[0][indexPath.row])) LUX"
-        case IOTEntity.cSensorAmbientTemp:
+        case .cSensorAmbientTemp:
             cellOutput = "\(String(self.data[0][indexPath.row])) C"
         default:
             break

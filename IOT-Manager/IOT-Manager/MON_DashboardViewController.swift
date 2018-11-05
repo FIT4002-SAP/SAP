@@ -9,6 +9,11 @@
 import Foundation
 import SAPFiori
 
+/*
+ *  Controles the dashboard for an IoT device
+ *  Each item in the list is determined from IOTEntity class
+ *  Depending on selection, different segues are triggered
+ */
 class MON_DashboardViewController: FUIFormTableViewController {
     
     private var entities = IOTEntity.all
@@ -91,6 +96,7 @@ class MON_DashboardViewController: FUIFormTableViewController {
     }
     
     override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // when selecting a row, the next screen is decided by the row number, and the segue is started
         switch indexPath.row {
         case 0:
             performSegue(withIdentifier: "allDataCellSelected", sender: self.tableView.cellForRow(at: indexPath))
