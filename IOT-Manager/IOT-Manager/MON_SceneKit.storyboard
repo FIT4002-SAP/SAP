@@ -12,7 +12,7 @@
         <!--Scene Kit View Controller-->
         <scene sceneID="cnc-qL-kJa">
             <objects>
-                <viewController id="rry-2U-PPV" customClass="MON_SceneKitViewController" customModule="IOT_Manager" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sceneKit" id="rry-2U-PPV" customClass="MON_SceneKitViewController" customModule="IOT_Manager" sceneMemberID="viewController">
                     <sceneKitView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ghi-3P-I8j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

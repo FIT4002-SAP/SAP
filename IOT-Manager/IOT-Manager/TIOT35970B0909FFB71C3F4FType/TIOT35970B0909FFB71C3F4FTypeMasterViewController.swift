@@ -91,7 +91,7 @@ class TIOT35970B0909FFB71C3F4FTypeMasterViewController: FUIFormTableViewControll
 
     func requestEntities(completionHandler: @escaping (Error?) -> Void) {
             // Only request the first 20 values. If you want to modify the requested entities, you can do it here.
-            let query = DataQuery().selectAll().top(20)
+            let query = DataQuery().selectAll()
             self.iotservice.fetchTIot35970b0909ffb71c3f4f(matching: query) { tIot35970b0909ffb71c3f4f, error in
                 guard let tIot35970b0909ffb71c3f4f = tIot35970b0909ffb71c3f4f else {
                     completionHandler(error!)

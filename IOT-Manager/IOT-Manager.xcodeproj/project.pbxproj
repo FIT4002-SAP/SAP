@@ -51,6 +51,7 @@
 		CD55F4192161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55F4152161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeDetailViewController.swift */; };
 		CD55F41A2161EDC200990889 /* TIOT35970B0909FFB71C3F4FType.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD55F4162161EDC200990889 /* TIOT35970B0909FFB71C3F4FType.storyboard */; };
 		CD55F41B2161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD55F4182161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeMasterViewController.swift */; };
+		CDB80FD921798D7600D8037D /* MON_HUDScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB80FD821798D7600D8037D /* MON_HUDScene.swift */; };
 		CDEBCB892117E79E00263D34 /* MON_Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDEBCB882117E79E00263D34 /* MON_Dashboard.storyboard */; };
 		CDEBCB8B2117E8C800263D34 /* MON_DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBCB8A2117E8C800263D34 /* MON_DashboardViewController.swift */; };
 		CDEBCB8D2117EA1500263D34 /* IOTEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBCB8C2117EA1500263D34 /* IOTEntity.swift */; };
@@ -118,6 +119,8 @@
 		CD55F4152161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIOT35970B0909FFB71C3F4FTypeDetailViewController.swift; sourceTree = "<group>"; };
 		CD55F4172161EDC200990889 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TIOT35970B0909FFB71C3F4FType.storyboard; sourceTree = "<group>"; };
 		CD55F4182161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TIOT35970B0909FFB71C3F4FTypeMasterViewController.swift; sourceTree = "<group>"; };
+		CDB80FD821798D7600D8037D /* MON_HUDScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MON_HUDScene.swift; sourceTree = "<group>"; };
+		CDB80FDA2179A5F500D8037D /* IOT-Manager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "IOT-Manager.entitlements"; sourceTree = "<group>"; };
 		CDEBCB882117E79E00263D34 /* MON_Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MON_Dashboard.storyboard; path = ../MON_Dashboard.storyboard; sourceTree = "<group>"; };
 		CDEBCB8A2117E8C800263D34 /* MON_DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MON_DashboardViewController.swift; sourceTree = "<group>"; };
 		CDEBCB8C2117EA1500263D34 /* IOTEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOTEntity.swift; sourceTree = "<group>"; };
@@ -234,6 +237,7 @@
 		7A1315B71D4B982000A5DA56 /* IOT-Manager */ = {
 			isa = PBXGroup;
 			children = (
+				CDB80FDA2179A5F500D8037D /* IOT-Manager.entitlements */,
 				CD3FC81321578EF000547532 /* SceneKit */,
 				12D066CB1F4DDAE40075EBA4 /* Onboarding */,
 				7532C1BB1D5B6917004B03AF /* Model */,
@@ -281,6 +285,7 @@
 				CD3FC81721578F8C00547532 /* art.scnassets */,
 				CD3FC8202157944B00547532 /* MON_SceneKit.storyboard */,
 				CD3FC8222157948500547532 /* MON_SceneKitViewController.swift */,
+				CDB80FD821798D7600D8037D /* MON_HUDScene.swift */,
 			);
 			name = SceneKit;
 			sourceTree = "<group>";
@@ -331,6 +336,11 @@
 						DevelopmentTeam = 7TSP9DBMZ4;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -391,6 +401,7 @@
 				CD55F4192161EDC200990889 /* TIOT35970B0909FFB71C3F4FTypeDetailViewController.swift in Sources */,
 				4B985CCFC6F1F78F4468BA23 /* IotserviceFactory.swift in Sources */,
 				CDEBCB8B2117E8C800263D34 /* MON_DashboardViewController.swift in Sources */,
+				CDB80FD921798D7600D8037D /* MON_HUDScene.swift in Sources */,
 				9EEEB9E213DCF7BD21C004B7 /* IotserviceMetadataParser.swift in Sources */,
 				CD412BCE211811770072B536 /* MON_DataHistoryViewController.swift in Sources */,
 				AD2D6D047E1B83C858917D06 /* IotserviceMetadataText.swift in Sources */,
@@ -559,7 +570,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7TSP9DBMZ4;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
@@ -582,7 +592,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7TSP9DBMZ4;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
