@@ -101,20 +101,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // Called to let your app know which action was selected by the user for a given notification.
     func userNotificationCenter(_: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         self.logger.info("App opened via user selecting notification: \(response.notification.request.content.body)")
-        // Here is where you want to take action to handle the notification, maybe navigate the user to a given screen.
         
-        if (response.notification.request.content.userInfo["data"] as! String == "VEGETATION") {
+        // Here is where you want to take action to handle the notification, maybe navigate the user to a given screen.
+        let notificationData = response.notification.request.content.userInfo["data"] as! String
+        if (notificationData == "VEGETATION"
+            || notificationData == "HEAT"
+            || notificationData == "MOVEMENT") {
             let navController = self.window?.rootViewController?.childViewControllers[1] as! UINavigationController
             let mainStoryboard = UIStoryboard(name: "MON_SceneKit", bundle: nil)
             let scnKitViewController = mainStoryboard.instantiateViewController(withIdentifier: "sceneKit") as! MON_SceneKitViewController
-            scnKitViewController.animationType = AnimationType.vegetation
-            navController.setViewControllers([scnKitViewController], animated: true)
-        }
-        else if (response.notification.request.content.userInfo["data"] as! String == "HEAT") {
-            let navController = self.window?.rootViewController?.childViewControllers[1] as! UINavigationController
-            let mainStoryboard = UIStoryboard(name: "MON_SceneKit", bundle: nil)
-            let scnKitViewController = mainStoryboard.instantiateViewController(withIdentifier: "sceneKit") as! MON_SceneKitViewController
-            scnKitViewController.animationType = AnimationType.heat
+            
+            switch notificationData {
+            case "VEGETATION":
+                scnKitViewController.animationType = AnimationType.vegetation
+            case "HEAT":
+                scnKitViewController.animationType = AnimationType.heat
+            case "MOVEMENT":
+                scnKitViewController.animationType = AnimationType.movement
+            default:
+                break
+            }
             navController.setViewControllers([scnKitViewController], animated: true)
         }
         

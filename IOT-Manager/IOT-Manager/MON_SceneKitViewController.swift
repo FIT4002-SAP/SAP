@@ -19,6 +19,7 @@ enum AnimationType {
     case none
     case heat
     case vegetation
+    case movement
 }
 
 /*
@@ -53,6 +54,12 @@ class MON_SceneKitViewController: UIViewController {
             displayVegetation(withDuration: 1.0)
             hudScene = OverlayScene(size: self.view.bounds.size)
             hudScene.setLabel(text: "Warning - Vegetation detected on tower 🍃")
+            scnView.overlaySKScene = hudScene
+        }
+        if (animationType == AnimationType.movement) {
+            move(withDuration: 1.5)
+            hudScene = OverlayScene(size: self.view.bounds.size)
+            hudScene.setLabel(text: "Warning - Tower Moving")
             scnView.overlaySKScene = hudScene
         }
     }
@@ -93,6 +100,18 @@ class MON_SceneKitViewController: UIViewController {
         }
         
         let pulseSequence = SCNAction.sequence([highlightAction, unHighlightAction])
+        let infiniteLoop = SCNAction.repeatForever(pulseSequence)
+        powerline.runAction(infiniteLoop)
+    }
+    
+    func move(withDuration duration: TimeInterval) {
+        
+        let powerline = scene.rootNode.childNodes[1].childNodes[0]
+        
+        let leanAction = SCNAction.rotateBy(x: 0, y: 0, z: 0.5, duration: duration)
+        let straightenAction = SCNAction.rotateBy(x: 0, y: 0, z: -0.5, duration: duration)
+        
+        let pulseSequence = SCNAction.sequence([leanAction, straightenAction])
         let infiniteLoop = SCNAction.repeatForever(pulseSequence)
         powerline.runAction(infiniteLoop)
     }
